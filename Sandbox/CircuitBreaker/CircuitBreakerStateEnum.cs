@@ -3,7 +3,7 @@
     public enum CircuitBreakerStateEnum
     {
         Open,
-        HalpOpen,
+        HalfOpen,
         Closed
     }
 }

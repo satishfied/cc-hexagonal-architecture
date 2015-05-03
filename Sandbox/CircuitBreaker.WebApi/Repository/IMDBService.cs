@@ -11,7 +11,12 @@ namespace CircuitBreaker.WebApi.Repository
     {
         public MovieDetailResponse RetrieveDetailsForMovie(int id)
         {
-            
+            return new MovieDetailResponse()
+            {
+                Id = 1,
+                Cast = "Veel goei acteurs",
+                Producer = "Steven spielerai"
+            };
         }
     }
 }
