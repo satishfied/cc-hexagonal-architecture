@@ -12,7 +12,6 @@ namespace CircuitBreaker
         {
             get;
             private set;
-
         }
 
         public Exception LastException
@@ -29,24 +28,25 @@ namespace CircuitBreaker
 
         public void Trip(Exception ex)
         {
-            throw new NotImplementedException();
+            this.State = CircuitBreakerStateEnum.Open;
+            this.LastException = ex;
         }
 
         public void Reset()
         {
-            throw new NotImplementedException();
+            this.State = CircuitBreakerStateEnum.Closed;
         }
 
         public void HalfOpen()
         {
-            throw new NotImplementedException();
+            this.State = CircuitBreakerStateEnum.HalfOpen;
         }
 
         public bool IsClosed
         {
             get
             {
-                throw new NotImplementedException();
+                return this.State == CircuitBreakerStateEnum.Closed;
             }
         }
     }
