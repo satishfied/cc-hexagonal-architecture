@@ -8,6 +8,11 @@ namespace CircuitBreaker
 {
     class InMemoryCircuitBreakerStateStore : ICircuitBreakerStateStore
     {
+        public InMemoryCircuitBreakerStateStore()
+        {
+            this.State = CircuitBreakerStateEnum.Closed;
+        }
+
         public CircuitBreakerStateEnum State
         {
             get;

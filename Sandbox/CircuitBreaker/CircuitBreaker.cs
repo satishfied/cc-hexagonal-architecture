@@ -130,6 +130,38 @@
             }
         }
 
+        public void PerformIncredibaleAction(int runCount)
+        {
+            if (runCount == 0)
+            {
+                this.PrintCircuitBreakerState();
+                throw new Exception("Oh ooh!");
+            }
+
+            if (runCount == 1)
+            {
+                this.PrintCircuitBreakerState();
+                Console.WriteLine("Incredible action performed! runcount = " + runCount);
+            }
+
+            if (runCount == 2)
+            {
+                this.PrintCircuitBreakerState();
+                Console.WriteLine("Incredible action performed! runcount = " + runCount);
+            }
+
+            if (runCount == 3)
+            {
+                this.PrintCircuitBreakerState();
+                Console.WriteLine("Incredible action performed! runcount = " + runCount);
+            }
+        }
+
+        private void PrintCircuitBreakerState()
+        {
+            Console.WriteLine("CircuitBraeker state: " + this.stateStore.State);
+        }
+
         private void TrackException(Exception ex)
         {
             // For simplicity in this example, open the circuit breaker on the first exception.
