@@ -51,6 +51,12 @@
 
         #region Methods
 
+        public CircuitBreaker()
+        {
+            //default time ..
+            OpenToHalfOpenWaitTime = new TimeSpan(0,5,0);
+        }
+
         public void ExecuteAction(Action action)
         {
             //...

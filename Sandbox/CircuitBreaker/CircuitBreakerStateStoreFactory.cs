@@ -2,7 +2,7 @@ namespace CircuitBreaker
 {
     using System;
 
-    internal class CircuitBreakerStateStoreFactory
+    public class CircuitBreakerStateStoreFactory
     {
         private static ICircuitBreakerStateStore circuitBreakerStateStore;
         private static object sema = new object();

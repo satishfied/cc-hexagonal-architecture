@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker", "CircuitBreaker\CircuitBreaker.csproj", "{8FB5942A-A947-44CB-9E32-B7DD185C703C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker.WebApi", "CircuitBreaker.WebApi\CircuitBreaker.WebApi.csproj", "{33B4F6CE-73E6-4C96-855C-31273CD3276A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker.IMDB.WebApi", "CircuitBreaker.IMDB.WebApi\CircuitBreaker.IMDB.WebApi.csproj", "{AFB0B5CA-213A-4F3D-8F97-064A38022A4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UsingInjection", "UsingInjection", "{3BFE8A80-AAAD-4212-898A-D2A85873267A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker.InjectionPolicy", "CircuitBreaker.InjectionPolicy\CircuitBreaker.InjectionPolicy.csproj", "{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircuitBreaker.InjectionPolicy.Tests", "CircuitBreaker.InjectionPolicy.Tests\CircuitBreaker.InjectionPolicy.Tests.csproj", "{94F94F31-3DEA-4A12-AB68-3E8CD04808AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +33,20 @@ Global
 		{AFB0B5CA-213A-4F3D-8F97-064A38022A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFB0B5CA-213A-4F3D-8F97-064A38022A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFB0B5CA-213A-4F3D-8F97-064A38022A4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F94F31-3DEA-4A12-AB68-3E8CD04808AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F94F31-3DEA-4A12-AB68-3E8CD04808AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F94F31-3DEA-4A12-AB68-3E8CD04808AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F94F31-3DEA-4A12-AB68-3E8CD04808AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CFA9E688-4E0B-4D07-9B26-0AE1F6C9CCF3} = {3BFE8A80-AAAD-4212-898A-D2A85873267A}
+		{94F94F31-3DEA-4A12-AB68-3E8CD04808AB} = {3BFE8A80-AAAD-4212-898A-D2A85873267A}
 	EndGlobalSection
 EndGlobal

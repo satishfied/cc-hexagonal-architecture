@@ -13,10 +13,22 @@ namespace CircuitBreaker
             this.State = CircuitBreakerStateEnum.Closed;
         }
 
+        private CircuitBreakerStateEnum _state;
+
         public CircuitBreakerStateEnum State
         {
-            get;
-            private set;
+            get
+            {
+                return _state;
+            }        
+            private set
+            {
+                if (value != State)
+                {
+                    _state = value;
+                    LastStateChangedDateUtc = DateTime.UtcNow;                    
+                }
+            } 
         }
 
         public Exception LastException
