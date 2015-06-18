@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Recruiting.ApplicationServices;
 using Recruiting.Domain;
 
 namespace Recruiting.ScenarioTests
@@ -15,6 +16,14 @@ namespace Recruiting.ScenarioTests
             var screening = screeningFactory.Create(new DateTime(2015, 02, 24), "Luc Leysen");
 
             Assert.IsNotNull(screening);
+        }
+
+        [TestMethod]
+        public void ScreeningService_CreateScreening_ScreeningPersisted()
+        {
+            ScreeningService screeningService = new ScreeningService();
+
+            screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
         }
     }
 }

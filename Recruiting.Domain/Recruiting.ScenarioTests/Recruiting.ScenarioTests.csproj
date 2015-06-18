@@ -57,6 +57,10 @@
     <Folder Include="InMemory\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Recruiting.ApplicationServices\Recruiting.ApplicationServices.csproj">
+      <Project>{34a36459-2d40-49df-89f4-a69d31fc28e6}</Project>
+      <Name>Recruiting.ApplicationServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Recruiting.Domain\Recruiting.Domain.csproj">
       <Project>{2DDA709C-7ADF-4149-A1CF-9BD55DC6D928}</Project>
       <Name>Recruiting.Domain</Name>
