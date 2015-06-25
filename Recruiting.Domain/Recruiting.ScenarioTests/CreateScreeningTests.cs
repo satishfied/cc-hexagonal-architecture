@@ -5,9 +5,19 @@ using Recruiting.Domain;
 
 namespace Recruiting.ScenarioTests
 {
+    using NSubstitute;
+
     [TestClass]
     public class CreateScreeningTests
     {
+        private IScreeningRepository repository;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            this.repository = new InMemoryScreeningRepository();
+        }
+
         [TestMethod]
         public void CreateScreening_x_ScreeningPersisted()
         {
@@ -21,9 +31,12 @@ namespace Recruiting.ScenarioTests
         [TestMethod]
         public void ScreeningService_CreateScreening_ScreeningPersisted()
         {
-            ScreeningService screeningService = new ScreeningService();
+            ScreeningService screeningService = new ScreeningService(this.repository);
 
-            screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
+            var id = screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
+
+            var result = screeningService.
+            Assert.AreEqual();
         }
     }
 }

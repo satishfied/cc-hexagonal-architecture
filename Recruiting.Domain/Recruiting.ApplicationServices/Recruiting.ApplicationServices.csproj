@@ -42,6 +42,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreeningService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Recruiting.Domain\Recruiting.Domain.csproj">
+      <Project>{2dda709c-7adf-4149-a1cf-9bd55dc6d928}</Project>
+      <Name>Recruiting.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
