@@ -1,9 +1,14 @@
 ﻿namespace Recruiting.Domain
 {
-    using System;
+    using System.Collections.Generic;
 
     public interface IScreeningRepository
     {
-        void CreateScreening(DateTime date, string candidate);
+        #region Methods
+
+        IEnumerable<Screening> FindAll();
+        void PersistUpdate(Screening screening);
+
+        #endregion
     }
 }

@@ -33,10 +33,9 @@ namespace Recruiting.ScenarioTests
         {
             ScreeningService screeningService = new ScreeningService(this.repository);
 
-            var id = screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
+            screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
 
-            var result = screeningService.
-            Assert.AreEqual();
+            var result = this.repository.FindAll();
         }
     }
 }

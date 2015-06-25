@@ -2,10 +2,16 @@
 {
     using System;
 
-    internal class Screening
+    public class Screening
     {
-        private readonly DateTime date;
+        #region  Fields
+
         private readonly string candidate;
+        private readonly DateTime date;
+
+        #endregion
+
+        #region Constructors
 
         private Screening(DateTime date, string candidate)
         {
@@ -13,28 +19,42 @@
             this.candidate = candidate;
         }
 
-        public DateTime Date
-        {
-            get
-            {
-                return date;
-            }
-        }
+        #endregion
+
+        #region Properties
 
         public string Candidate
         {
             get
             {
-                return candidate;
+                return this.candidate;
             }
         }
 
+        public DateTime Date
+        {
+            get
+            {
+                return this.date;
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
         internal class ScreeningFactory
         {
+            #region Methods
+
             public Screening Create(DateTime date, string candidate)
             {
                 return new Screening(date, candidate);
             }
+
+            #endregion
         }
+
+        #endregion
     }
 }

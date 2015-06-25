@@ -56,11 +56,10 @@
   <ItemGroup>
     <Compile Include="CreateScreeningTests.cs" />
     <Compile Include="InMemoryScreeningRepository.cs" />
+    <Compile Include="InMemory\InMemoryScreeningRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="InMemory\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Recruiting.ApplicationServices\Recruiting.ApplicationServices.csproj">
       <Project>{34a36459-2d40-49df-89f4-a69d31fc28e6}</Project>
