@@ -6,9 +6,13 @@
     {
         #region Methods
 
+        string Create(Screening screening);
+
         IEnumerable<Screening> FindAll();
         void PersistUpdate(Screening screening);
 
         #endregion
+
+        Screening FindById(string id);
     }
 }

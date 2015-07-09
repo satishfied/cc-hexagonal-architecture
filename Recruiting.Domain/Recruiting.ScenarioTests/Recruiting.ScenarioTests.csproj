@@ -55,7 +55,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CreateScreeningTests.cs" />
-    <Compile Include="InMemoryScreeningRepository.cs" />
     <Compile Include="InMemory\InMemoryScreeningRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

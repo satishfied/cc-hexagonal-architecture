@@ -13,9 +13,19 @@ namespace Recruiting.ApplicationServices
             this.repository = repository;
         }
 
-        public void CreateScreening(DateTime date, string candidate)
+        public CreateScreeningResponse CreateScreening(CreateScreeningRequest request)
         {
-            throw new NotImplementedException();
+            Screening screening = new Screening(request.Date, request.Candidate);
+
+            string id = this.repository.Create(screening);
+
+            return new CreateScreeningResponse(id);
+        }
+
+        public ResultValidation<Screening> FindById(FindByIdRequest findByIdRequest)
+        {
+            Screening screening = this.repository.FindById(findByIdRequest.Id);
+            return new ResultValidation<Screening>(screening);
         }
     }
 }

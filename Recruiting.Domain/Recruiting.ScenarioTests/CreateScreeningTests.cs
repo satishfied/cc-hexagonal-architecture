@@ -6,6 +6,7 @@ using Recruiting.Domain;
 namespace Recruiting.ScenarioTests
 {
     using NSubstitute;
+    using Recruiting.ScenarioTests.InMemory;
 
     [TestClass]
     public class CreateScreeningTests
@@ -31,11 +32,29 @@ namespace Recruiting.ScenarioTests
         [TestMethod]
         public void ScreeningService_CreateScreening_ScreeningPersisted()
         {
-            ScreeningService screeningService = new ScreeningService(this.repository);
+            const string CANDIDATE = "Luc Leysen";
+            var date = new DateTime(2015, 2, 24);
 
-            screeningService.CreateScreening(new DateTime(2015, 02, 24), "Luc Leysen");
+            var screeningService = new ScreeningService(this.repository);
+            
+            var createScreeningRequest = new CreateScreeningRequest
+            {
+                Candidate = CANDIDATE,
+                Date = date
+            };
+            
+            var createScreeningResponse = screeningService.CreateScreening(createScreeningRequest);
 
-            var result = this.repository.FindAll();
+            var findByIdRequest = new FindByIdRequest
+            {
+                Id = createScreeningResponse.Id
+            };
+
+            var findByIdResponse = screeningService.FindById(findByIdRequest);
+
+            Assert.IsTrue(findByIdResponse.Succeeded);
+            Assert.AreEqual(CANDIDATE, findByIdResponse.Result.Candidate);
+            Assert.AreEqual(date, findByIdResponse.Result.Date);
         }
     }
 }

@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateScreeningRequest.cs" />
+    <Compile Include="CreateScreeningResponse.cs" />
+    <Compile Include="FindByIdRequest.cs" />
+    <Compile Include="ResultValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScreeningService.cs" />
   </ItemGroup>

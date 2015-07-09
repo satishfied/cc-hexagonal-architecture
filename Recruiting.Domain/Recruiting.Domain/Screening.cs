@@ -13,7 +13,7 @@
 
         #region Constructors
 
-        private Screening(DateTime date, string candidate)
+        public Screening(DateTime date, string candidate)
         {
             this.date = date;
             this.candidate = candidate;
