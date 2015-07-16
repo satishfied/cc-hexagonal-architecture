@@ -23,6 +23,8 @@
 
         #region Properties
 
+        public int ID { get; set; }
+
         public string Candidate
         {
             get

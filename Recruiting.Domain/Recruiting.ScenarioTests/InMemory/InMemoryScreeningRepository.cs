@@ -27,7 +27,7 @@
 
         #region Methods
 
-        public string Create(Screening screening)
+        public string Add(Screening screening)
         {
             if (!this.Screenings.Contains(screening))
             {
@@ -41,14 +41,6 @@
         public IEnumerable<Screening> FindAll()
         {
             return this.Screenings;
-        }
-
-        public void PersistUpdate(Screening screening)
-        {
-            if (!this.Screenings.Contains(screening))
-            {
-                this.Screenings.Add(screening);
-            }
         }
 
         public Screening FindById(string id)

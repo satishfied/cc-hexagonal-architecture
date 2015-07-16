@@ -17,7 +17,7 @@ namespace Recruiting.ApplicationServices
         {
             Screening screening = new Screening(request.Date, request.Candidate);
 
-            string id = this.repository.Create(screening);
+            string id = this.repository.Add(screening);
 
             return new CreateScreeningResponse(id);
         }

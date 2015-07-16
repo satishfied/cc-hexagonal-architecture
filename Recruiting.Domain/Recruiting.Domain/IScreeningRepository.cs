@@ -5,12 +5,9 @@
     public interface IScreeningRepository
     {
         #region Methods
-
-        string Create(Screening screening);
+        string Add(Screening screening);
 
         IEnumerable<Screening> FindAll();
-        void PersistUpdate(Screening screening);
-
         #endregion
 
         Screening FindById(string id);
