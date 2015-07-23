@@ -32,7 +32,10 @@ namespace Recruiting.Data.InMemory
             if (!this.Screenings.Contains(screening))
             {
                 this.Screenings.Add(screening);
-                return this.Screenings.Count.ToString();
+
+                screening.ID = this.Screenings.Count;
+
+                return screening.ID.ToString();
             }
 
             return "NaN";
