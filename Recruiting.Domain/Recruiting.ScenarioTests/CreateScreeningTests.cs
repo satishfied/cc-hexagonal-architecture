@@ -1,13 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Recruiting.ApplicationServices;
+using Recruiting.Data.InMemory;
 using Recruiting.Domain;
 
 namespace Recruiting.ScenarioTests
 {
-    using NSubstitute;
-    using Recruiting.ScenarioTests.InMemory;
-
     [TestClass]
     public class CreateScreeningTests
     {

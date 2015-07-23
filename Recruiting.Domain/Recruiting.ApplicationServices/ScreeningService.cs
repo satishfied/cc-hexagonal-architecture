@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Recruiting.Domain;
 
 namespace Recruiting.ApplicationServices
 {
-    using Recruiting.Domain;
-
     public class ScreeningService
     {
         private readonly IScreeningRepository repository;

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Recruiting.Domain;
 
 namespace Recruiting.Data.EF
@@ -22,7 +23,10 @@ namespace Recruiting.Data.EF
 
         public Screening FindById(string id)
         {
-            throw new System.NotImplementedException();
+            using (ScreeningContext screeningContext = new ScreeningContext())
+            {
+                return screeningContext.Screenings.Single(screening => screening.ID.ToString() == id);
+            }
         }
     }
 }

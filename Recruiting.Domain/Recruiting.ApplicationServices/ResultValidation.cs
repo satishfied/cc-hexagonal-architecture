@@ -1,8 +1,5 @@
 ﻿namespace Recruiting.ApplicationServices
 {
-    using System;
-    using Recruiting.Domain;
-
     public class ResultValidation<T>
     {
         private readonly T result;

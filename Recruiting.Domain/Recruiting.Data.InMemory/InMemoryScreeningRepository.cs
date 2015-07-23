@@ -1,10 +1,10 @@
-﻿namespace Recruiting.ScenarioTests.InMemory
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Recruiting.Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Recruiting.Domain;
 
+namespace Recruiting.Data.InMemory
+{
     public class InMemoryScreeningRepository : IScreeningRepository
     {
         #region  Fields

@@ -25,7 +25,7 @@
 
         public int ID { get; set; }
 
-        public string Candidate
+        public virtual string Candidate
         {
             get
             {
@@ -33,7 +33,7 @@
             }
         }
 
-        public DateTime Date
+        public virtual DateTime Date
         {
             get
             {
