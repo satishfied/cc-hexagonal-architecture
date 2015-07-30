@@ -48,7 +48,8 @@ namespace Recruiting.Data.InMemory
 
         public Screening FindById(string id)
         {
-            return this.Screenings.ElementAt(Int32.Parse(id) - 1);
+            int index = Int32.Parse(id) - 1;
+            return this.Screenings.ElementAtOrDefault(index);
         }
 
         #endregion
