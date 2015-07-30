@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruiting.Web", "Recruitin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruiting.Data.InMemory", "Recruiting.Data.InMemory\Recruiting.Data.InMemory.csproj", "{F888BB72-9F84-442C-857A-DC71FF38A147}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recruiting.Web.Angular", "Recruiting.Web.Angular\Recruiting.Web.Angular.csproj", "{3D931204-8D15-4837-9DC1-BAC20BCD959F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{F888BB72-9F84-442C-857A-DC71FF38A147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F888BB72-9F84-442C-857A-DC71FF38A147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F888BB72-9F84-442C-857A-DC71FF38A147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D931204-8D15-4837-9DC1-BAC20BCD959F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D931204-8D15-4837-9DC1-BAC20BCD959F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D931204-8D15-4837-9DC1-BAC20BCD959F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D931204-8D15-4837-9DC1-BAC20BCD959F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
