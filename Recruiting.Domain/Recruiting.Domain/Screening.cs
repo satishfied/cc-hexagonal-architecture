@@ -1,13 +1,17 @@
-﻿namespace Recruiting.Domain
-{
-    using System;
+﻿using System;
+using System.Collections.Generic;
 
+namespace Recruiting.Domain
+{
     public class Screening
     {
         #region  Fields
 
         private readonly string candidate;
         private readonly DateTime date;
+
+        private readonly List<ScreeningAspect> exercises;
+        private readonly List<ScreeningAspect> knowledgeDomains;
 
         #endregion
 
@@ -17,6 +21,8 @@
         {
             this.date = date;
             this.candidate = candidate;
+            this.exercises = new List<ScreeningAspect>();
+            this.knowledgeDomains = new List<ScreeningAspect>();
         }
 
         #endregion
@@ -25,7 +31,7 @@
 
         public int ID { get; set; }
 
-        public virtual string Candidate
+        public string Candidate
         {
             get
             {
@@ -33,12 +39,22 @@
             }
         }
 
-        public virtual DateTime Date
+        public DateTime Date
         {
             get
             {
                 return this.date;
             }
+        }
+
+        public IEnumerable<ScreeningAspect> Exercises
+        {
+            get { return this.exercises.AsReadOnly(); }
+        }
+
+        public IEnumerable<ScreeningAspect> KnowledgeDomains
+        {
+            get { return this.knowledgeDomains.AsReadOnly(); }
         }
 
         #endregion
@@ -55,6 +71,16 @@
             }
 
             #endregion
+        }
+
+        public void AddExercise(ScreeningAspect exercise)
+        {
+            this.exercises.Add(exercise);
+        }
+
+        public void AddKnowledgeDomain(ScreeningAspect knowledgeDomain)
+        {
+            this.knowledgeDomains.Add(knowledgeDomain);
         }
 
         #endregion

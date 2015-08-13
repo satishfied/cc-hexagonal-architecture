@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Recruiting.ApplicationServices;
 using Recruiting.Data.InMemory;
@@ -53,6 +54,21 @@ namespace Recruiting.ScenarioTests
             Assert.IsTrue(findByIdResponse.Succeeded);
             Assert.AreEqual(CANDIDATE, findByIdResponse.Result.Candidate);
             Assert.AreEqual(date, findByIdResponse.Result.Date);
+        }
+
+        [TestMethod]
+        public void AddKnowledgeDomainTest_KnowledgeDomainAddedToScreening()
+        {
+            const string KNOWLEDGE_DOMAIN_NAME = "OO";
+
+            Screening.ScreeningFactory screeningFactory = new Screening.ScreeningFactory();
+
+            var screening = screeningFactory.Create(new DateTime(2015, 02, 24), "Luc Leysen");
+            
+            screening.AddKnowledgeDomain(new ScreeningAspect(KNOWLEDGE_DOMAIN_NAME));
+
+            Assert.AreEqual(1, screening.KnowledgeDomains.Count());
+            Assert.AreEqual(KNOWLEDGE_DOMAIN_NAME, screening.KnowledgeDomains.First().Name);
         }
     }
 }
