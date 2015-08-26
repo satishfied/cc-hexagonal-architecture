@@ -3,59 +3,43 @@ using System.Collections.Generic;
 
 namespace Recruiting.Domain
 {
-    public class Screening
+    using Recruiting.Domain.Core;
+
+    public class Screening:Entity
     {
         #region  Fields
-
-        private readonly string candidate;
-        private readonly DateTime date;
-
-        private readonly List<ScreeningAspect> exercises;
-        private readonly List<ScreeningAspect> knowledgeDomains;
 
         #endregion
 
         #region Constructors
 
+        //EF:change:protected 
+        protected Screening()
+        {
+            
+        }
+
         public Screening(DateTime date, string candidate)
         {
-            this.date = date;
-            this.candidate = candidate;
-            this.exercises = new List<ScreeningAspect>();
-            this.knowledgeDomains = new List<ScreeningAspect>();
+            this.Date = date;
+            this.Candidate = candidate;
+            this.Exercises = new List<ScreeningAspect>();
+            this.KnowledgeDomains = new List<ScreeningAspect>();
         }
 
         #endregion
 
         #region Properties
 
-        public int ID { get; set; }
+        //EF:change:virtual/protected setters needed
+         
+        public virtual string Candidate { get; protected set; }
 
-        public string Candidate
-        {
-            get
-            {
-                return this.candidate;
-            }
-        }
+        public virtual DateTime Date { get; protected set; }
 
-        public DateTime Date
-        {
-            get
-            {
-                return this.date;
-            }
-        }
+        public virtual List<ScreeningAspect> Exercises { get; protected set; }
 
-        public IEnumerable<ScreeningAspect> Exercises
-        {
-            get { return this.exercises.AsReadOnly(); }
-        }
-
-        public IEnumerable<ScreeningAspect> KnowledgeDomains
-        {
-            get { return this.knowledgeDomains.AsReadOnly(); }
-        }
+        public virtual List<ScreeningAspect> KnowledgeDomains { get; protected set; }
 
         #endregion
 
@@ -75,14 +59,20 @@ namespace Recruiting.Domain
 
         public void AddExercise(ScreeningAspect exercise)
         {
-            this.exercises.Add(exercise);
+            this.Exercises.Add(exercise);
         }
 
         public void AddKnowledgeDomain(ScreeningAspect knowledgeDomain)
         {
-            this.knowledgeDomains.Add(knowledgeDomain);
+            this.KnowledgeDomains.Add(knowledgeDomain);
         }
 
         #endregion
+
+        //InMemory:Need
+        public void SetID(Guid id)
+        {
+            this.ID = id;
+        }
     }
 }

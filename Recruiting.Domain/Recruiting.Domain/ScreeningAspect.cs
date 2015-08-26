@@ -2,10 +2,18 @@
 
 namespace Recruiting.Domain
 {
-    public class ScreeningAspect
+    using Recruiting.Domain.Core;
+
+    public class ScreeningAspect : Entity
     {
-        public string Name { get; private set; }
-        public IList<Score> Scores { get; private set; }
+        public string Name { get; protected set; }
+        public IList<Score> Scores { get; protected set; }
+
+        //EF:change:protected 
+        protected ScreeningAspect()
+        {
+            
+        }
 
         public ScreeningAspect(string name)
         {

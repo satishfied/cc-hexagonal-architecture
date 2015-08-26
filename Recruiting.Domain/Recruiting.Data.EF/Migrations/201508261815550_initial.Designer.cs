@@ -13,7 +13,7 @@ namespace Recruiting.Data.EF.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201507231045498_initial"; }
+            get { return "201508261815550_initial"; }
         }
         
         string IMigrationMetadata.Source

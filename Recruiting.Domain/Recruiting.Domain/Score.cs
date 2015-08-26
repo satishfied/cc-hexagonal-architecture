@@ -1,8 +1,12 @@
 ﻿namespace Recruiting.Domain
 {
-    public class Score
+    using Recruiting.Domain.Core;
+
+    public class Score:Entity
     {
-        public string Remarks { get; set; }
-        public int Scoring { get; set; }
+        //EF:change:virtual/protected setters needed
+
+        public virtual string Remarks { get;protected set; }
+        public virtual int Scoring { get; protected set; }
     }
 }

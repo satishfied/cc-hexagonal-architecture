@@ -38,6 +38,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.Unity, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.3.5.1404.0\lib\net45\Microsoft.Practices.Unity.dll</HintPath>
@@ -130,6 +137,10 @@
     <ProjectReference Include="..\Recruiting.ApplicationServices\Recruiting.ApplicationServices.csproj">
       <Project>{34A36459-2D40-49DF-89F4-A69D31FC28E6}</Project>
       <Name>Recruiting.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Recruiting.Data.EF\Recruiting.Data.EF.csproj">
+      <Project>{8643cb48-b8f8-431a-9277-7305a6fe9a80}</Project>
+      <Name>Recruiting.Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Recruiting.Data.InMemory\Recruiting.Data.InMemory.csproj">
       <Project>{F888BB72-9F84-442C-857A-DC71FF38A147}</Project>

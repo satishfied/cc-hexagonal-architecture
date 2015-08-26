@@ -33,7 +33,7 @@ namespace Recruiting.Data.InMemory
             {
                 this.Screenings.Add(screening);
 
-                screening.ID = this.Screenings.Count;
+                screening.SetID(Guid.NewGuid());
 
                 return screening.ID.ToString();
             }

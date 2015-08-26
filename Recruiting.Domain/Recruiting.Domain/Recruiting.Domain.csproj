@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Entity.cs" />
     <Compile Include="IScreeningRepository.cs" />
     <Compile Include="ScreeningAspect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

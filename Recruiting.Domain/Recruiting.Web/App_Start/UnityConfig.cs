@@ -39,7 +39,9 @@ namespace Recruiting.Web.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType<IScreeningRepository, InMemoryScreeningRepository>(new ContainerControlledLifetimeManager());
+            //container.RegisterType<IScreeningRepository, InMemoryScreeningRepository>(new ContainerControlledLifetimeManager());
+
+            container.RegisterType<IScreeningRepository, Recruiting.Data.EF.ScreeningRepository>(new ContainerControlledLifetimeManager());
             container.RegisterType<ScreeningService>();
         }
     }

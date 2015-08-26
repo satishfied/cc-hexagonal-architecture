@@ -2,6 +2,8 @@
 
 namespace Recruiting.ApplicationServices
 {
+    using System;
+
     public class ScreeningService
     {
         private readonly IScreeningRepository repository;
@@ -13,7 +15,11 @@ namespace Recruiting.ApplicationServices
 
         public CreateScreeningResponse CreateScreening(CreateScreeningRequest request)
         {
-            Screening screening = new Screening(request.Date, request.Candidate);
+
+            if (!request.Date.HasValue)
+                request.Date = DateTime.Now;
+
+            Screening screening = new Screening(request.Date.Value, request.Candidate);
 
             string id = this.repository.Add(screening);
 
