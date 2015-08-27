@@ -17,6 +17,10 @@ namespace Recruiting.Domain
 
         #region Constructors
 
+        private Screening()
+        {
+        }
+
         public Screening(DateTime date, string candidate)
         {
             this.date = date;
@@ -84,5 +88,19 @@ namespace Recruiting.Domain
         }
 
         #endregion
+
+        public class Serializer
+        {
+            public static Screening Deserialize(dynamic data)
+            {
+                return new Screening(data.date, data.candidate);
+            }
+
+            public static dynamic Serialize(Screening screening)
+            {
+                return new { date = screening.Date, candidate = screening.Candidate };
+            }
+        }
+
     }
 }
