@@ -131,10 +131,6 @@
       <Project>{34A36459-2D40-49DF-89F4-A69D31FC28E6}</Project>
       <Name>Recruiting.ApplicationServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Recruiting.Data.InMemory\Recruiting.Data.InMemory.csproj">
-      <Project>{F888BB72-9F84-442C-857A-DC71FF38A147}</Project>
-      <Name>Recruiting.Data.InMemory</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Recruiting.Domain\Recruiting.Domain.csproj">
       <Project>{2DDA709C-7ADF-4149-A1CF-9BD55DC6D928}</Project>
       <Name>Recruiting.Domain</Name>

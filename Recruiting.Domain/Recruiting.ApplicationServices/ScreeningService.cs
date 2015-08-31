@@ -1,4 +1,5 @@
-﻿using Recruiting.Domain;
+﻿using System;
+using Recruiting.Domain;
 
 namespace Recruiting.ApplicationServices
 {
@@ -13,7 +14,7 @@ namespace Recruiting.ApplicationServices
 
         public CreateScreeningResponse CreateScreening(CreateScreeningRequest request)
         {
-            Screening screening = new Screening(request.Date, request.Candidate);
+            Screening screening = new Screening(Guid.NewGuid(), request.Date, request.Candidate);
 
             string id = this.repository.Add(screening);
 

@@ -1,74 +1,36 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Recruiting.ApplicationServices;
-using Recruiting.Data.InMemory;
+using Microsoft.VisualStudio.TestTools.UnitTesting; 
+using Recruiting.Data.EventStore; 
 using Recruiting.Domain;
+using Recruiting.Domain.Infrastructure;
 
 namespace Recruiting.ScenarioTests
 {
     [TestClass]
     public class CreateScreeningTests
     {
-        private IScreeningRepository repository;
+        private IEventSourcedRepository<Screening> _repository;
 
         [TestInitialize]
         public void Initialize()
         {
-            this.repository = new InMemoryScreeningRepository();
+            this._repository = new EventSourcedRepository<Screening>();
         }
 
         [TestMethod]
-        public void CreateScreening_x_ScreeningPersisted()
+        public void CreateScreeningTests_CreateScreening()
         {
-            Screening.ScreeningFactory screeningFactory = new Screening.ScreeningFactory();
+            string unitOfWorkId = Guid.NewGuid().ToString();
+            Guid id = Guid.NewGuid();
+            var screening = new Screening(id, DateTime.Now, "Candi Date");
 
-            var screening = screeningFactory.Create(new DateTime(2015, 02, 24), "Luc Leysen");
+            _repository.Add(screening,unitOfWorkId);
 
-            Assert.IsNotNull(screening);
-        }
+            var readRepository = new EventSourcedRepository<Screening>();
+            var resultFromDb = readRepository.Get(id);
 
-        [TestMethod]
-        public void ScreeningService_CreateScreening_ScreeningPersisted()
-        {
-            const string CANDIDATE = "Luc Leysen";
-            var date = new DateTime(2015, 2, 24);
-
-            var screeningService = new ScreeningService(this.repository);
-            
-            var createScreeningRequest = new CreateScreeningRequest
-            {
-                Candidate = CANDIDATE,
-                Date = date
-            };
-            
-            var createScreeningResponse = screeningService.CreateScreening(createScreeningRequest);
-
-            var findByIdRequest = new FindByIdRequest
-            {
-                Id = createScreeningResponse.Id
-            };
-
-            var findByIdResponse = screeningService.FindById(findByIdRequest);
-
-            Assert.IsTrue(findByIdResponse.Succeeded);
-            Assert.AreEqual(CANDIDATE, findByIdResponse.Result.Candidate);
-            Assert.AreEqual(date, findByIdResponse.Result.Date);
-        }
-
-        [TestMethod]
-        public void AddKnowledgeDomainTest_KnowledgeDomainAddedToScreening()
-        {
-            const string KNOWLEDGE_DOMAIN_NAME = "OO";
-
-            Screening.ScreeningFactory screeningFactory = new Screening.ScreeningFactory();
-
-            var screening = screeningFactory.Create(new DateTime(2015, 02, 24), "Luc Leysen");
-            
-            screening.AddKnowledgeDomain(new ScreeningAspect(KNOWLEDGE_DOMAIN_NAME));
-
-            Assert.AreEqual(1, screening.KnowledgeDomains.Count());
-            Assert.AreEqual(KNOWLEDGE_DOMAIN_NAME, screening.KnowledgeDomains.First().Name);
+            Assert.AreEqual(id,resultFromDb.Id);
         }
     }
 }

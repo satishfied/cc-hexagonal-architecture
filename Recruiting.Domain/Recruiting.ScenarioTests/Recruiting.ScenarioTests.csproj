@@ -63,9 +63,9 @@
       <Project>{34a36459-2d40-49df-89f4-a69d31fc28e6}</Project>
       <Name>Recruiting.ApplicationServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Recruiting.Data.InMemory\Recruiting.Data.InMemory.csproj">
-      <Project>{F888BB72-9F84-442C-857A-DC71FF38A147}</Project>
-      <Name>Recruiting.Data.InMemory</Name>
+    <ProjectReference Include="..\Recruiting.Data.EventStore\Recruiting.Data.EventStore.csproj">
+      <Project>{6D248BFE-183D-4700-8BC7-9751AF49C7D2}</Project>
+      <Name>Recruiting.Data.EventStore</Name>
     </ProjectReference>
     <ProjectReference Include="..\Recruiting.Domain\Recruiting.Domain.csproj">
       <Project>{2DDA709C-7ADF-4149-A1CF-9BD55DC6D928}</Project>
@@ -73,6 +73,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

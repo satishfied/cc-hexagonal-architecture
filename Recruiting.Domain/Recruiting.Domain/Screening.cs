@@ -1,45 +1,64 @@
 ﻿using System;
 using System.Collections.Generic;
+using Recruiting.Domain.Infrastructure;
 
 namespace Recruiting.Domain
 {
-    public class Screening
+    public class Screening:EventSourced
     {
         #region  Fields
 
-        private readonly string candidate;
-        private readonly DateTime date;
+        private string _candidate;
+        private DateTime _date;
 
-        private readonly List<ScreeningAspect> exercises;
-        private readonly List<ScreeningAspect> knowledgeDomains;
+        private readonly List<ScreeningAspect> _exercises;
+        private readonly List<ScreeningAspect> _knowledgeDomains;
 
         #endregion
 
         #region Constructors
 
-        private Screening()
+        protected Screening(Guid id):base(id)
         {
+            _exercises = new List<ScreeningAspect>();
+            _knowledgeDomains = new List<ScreeningAspect>();
         }
 
-        public Screening(DateTime date, string candidate)
+        public Screening(Guid id,DateTime date, string candidate):this(id)
+        {                                 
+            Update(new ScreeningCreated(){Date=date,Candidate = candidate});
+        }
+
+        #endregion
+
+        #region "Events"
+
+        protected override void SetupEventHandlersOverride()
         {
-            this.date = date;
-            this.candidate = candidate;
-            this.exercises = new List<ScreeningAspect>();
-            this.knowledgeDomains = new List<ScreeningAspect>();
+            Handles<ScreeningCreated>(OnScreeningCreated);
+            Handles<KnowledgeDomainAdded>(OnKnownledgeDomainAdded);
+        }
+
+        private void OnScreeningCreated(ScreeningCreated evt)
+        {           
+           _candidate = evt.Candidate;
+           _date = evt.Date; 
+        }
+
+        private void OnKnownledgeDomainAdded(KnowledgeDomainAdded evt)
+        {
+            _knowledgeDomains.Add(evt.ScreeningAspect);
         }
 
         #endregion
 
         #region Properties
-
-        public int ID { get; set; }
-
+         
         public string Candidate
         {
             get
             {
-                return this.candidate;
+                return this._candidate;
             }
         }
 
@@ -47,18 +66,18 @@ namespace Recruiting.Domain
         {
             get
             {
-                return this.date;
+                return this._date;
             }
         }
 
         public IEnumerable<ScreeningAspect> Exercises
         {
-            get { return this.exercises.AsReadOnly(); }
+            get { return this._exercises.AsReadOnly(); }
         }
 
         public IEnumerable<ScreeningAspect> KnowledgeDomains
         {
-            get { return this.knowledgeDomains.AsReadOnly(); }
+            get { return this._knowledgeDomains.AsReadOnly(); }
         }
 
         #endregion
@@ -71,7 +90,7 @@ namespace Recruiting.Domain
 
             public Screening Create(DateTime date, string candidate)
             {
-                return new Screening(date, candidate);
+                return new Screening(Guid.NewGuid(),date, candidate);
             }
 
             #endregion
@@ -79,28 +98,15 @@ namespace Recruiting.Domain
 
         public void AddExercise(ScreeningAspect exercise)
         {
-            this.exercises.Add(exercise);
+          Update(new KnowledgeDomainAdded(){ScreeningAspect = exercise});
         }
 
         public void AddKnowledgeDomain(ScreeningAspect knowledgeDomain)
         {
-            this.knowledgeDomains.Add(knowledgeDomain);
+            Update(new KnowledgeDomainAdded() { ScreeningAspect = knowledgeDomain });
         }
 
         #endregion
-
-        public class Serializer
-        {
-            public static Screening Deserialize(dynamic data)
-            {
-                return new Screening(data.date, data.candidate);
-            }
-
-            public static dynamic Serialize(Screening screening)
-            {
-                return new { date = screening.Date, candidate = screening.Candidate };
-            }
-        }
 
     }
 }
