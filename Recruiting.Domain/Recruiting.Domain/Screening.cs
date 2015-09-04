@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Recruiting.Domain.Infrastructure;
+using Recruiting.Domain.Messages;
 
 namespace Recruiting.Domain
 {

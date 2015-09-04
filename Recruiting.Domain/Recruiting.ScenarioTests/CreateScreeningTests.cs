@@ -10,12 +10,12 @@ namespace Recruiting.ScenarioTests
     [TestClass]
     public class CreateScreeningTests
     {
-        private IEventSourcedRepository<Screening> _repository;
+        private IAggregateRootRepository<Screening> _repository;
 
         [TestInitialize]
         public void Initialize()
         {
-            this._repository = new EventSourcedRepository<Screening>();
+            this._repository = new AggregateRootRepository<Screening>();
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace Recruiting.ScenarioTests
 
             _repository.Add(screening,unitOfWorkId);
 
-            var readRepository = new EventSourcedRepository<Screening>();
+            var readRepository = new AggregateRootRepository<Screening>();
             var resultFromDb = readRepository.Get(id);
 
             Assert.AreEqual(id,resultFromDb.Id);

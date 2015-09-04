@@ -4,8 +4,13 @@ namespace Recruiting.Domain
 {
     public class ScreeningAspect
     {
-        public string Name { get; private set; }
-        public IList<Score> Scores { get; private set; }
+        public string Name { get; set; }
+        public IList<Score> Scores { get; set; }
+
+        public ScreeningAspect()
+        {
+            
+        }
 
         public ScreeningAspect(string name)
         {

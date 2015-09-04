@@ -2,7 +2,7 @@
 
 namespace Recruiting.Domain.Infrastructure
 {
-    public interface IEventSourcedRepository<T> where T : EventSourced
+    public interface IAggregateRootRepository<T> where T : EventSourced
     {
         /// <summary>
         /// Tries to retrieve the event sourced entity.

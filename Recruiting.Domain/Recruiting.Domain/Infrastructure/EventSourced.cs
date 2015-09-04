@@ -1,6 +1,7 @@
 ﻿ 
 using System;
 using System.Collections.Generic;
+using Recruiting.Domain.Infrastructure.Messaging;
 
 namespace Recruiting.Domain.Infrastructure
 {
@@ -9,34 +10,26 @@ namespace Recruiting.Domain.Infrastructure
     /// </summary>
     /// <remarks>
     /// </remarks>
-    public abstract class EventSourced:Entity
+    public abstract class EventSourced:Entity,IMessagePublisher
     {
         private readonly Dictionary<Type, Action<IVersionedEvent>> _handlers = new Dictionary<Type, Action<IVersionedEvent>>();
         private readonly List<IVersionedEvent> _pendingEvents = new List<IVersionedEvent>();
-         
+        private readonly List<IMessage> _pendingMessages = new List<IMessage>();
+
         private int _version = -1;
 
         protected EventSourced(Guid id):base(id)
         {
             SetupEventHandlers();
         }
-
-        //protected EventSourced(Guid id,IEnumerable<IVersionedEvent> history)
-        //    : this(id)
-        //{
-        //    this.LoadFrom(history);
-        //}
-
+ 
         private void SetupEventHandlers()
         {
             SetupEventHandlersOverride();
         }
 
         protected abstract void SetupEventHandlersOverride();
-
-        /// <summary>
-        /// Gets the entity's version. As the entity is being updated and events being generated, the version is incremented.
-        /// </summary>
+ 
         public int Version
         {
             get { return this._version; }
@@ -49,6 +42,16 @@ namespace Recruiting.Domain.Infrastructure
         public IEnumerable<IVersionedEvent> Events
         {
             get { return this._pendingEvents; }
+        }
+
+        public IEnumerable<IMessage> Messages
+        {
+            get { return this._pendingMessages; }
+        }
+
+        protected void Publish(IMessage message)
+        {
+            _pendingMessages.Add(message);
         }
 
         /// <summary>
@@ -76,6 +79,13 @@ namespace Recruiting.Domain.Infrastructure
             this._handlers[e.GetType()].Invoke(e);
             this._version = e.Version;
             this._pendingEvents.Add(e);
+
+            var msg = e as IMessage;
+            if (msg != null)
+            {
+                _pendingMessages.Add(msg);
+            }
+
         }
     }
 }

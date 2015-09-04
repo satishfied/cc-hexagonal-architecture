@@ -12,14 +12,14 @@ using Recruiting.Domain.Infrastructure;
 
 namespace Recruiting.Data.EventStore
 {
-    public class EventSourcedRepository<T> : IEventSourcedRepository<T> where T : EventSourced
+    public class AggregateRootRepository<T> : IAggregateRootRepository<T> where T : EventSourced
     {
 
         private readonly string _sourceType = typeof(T).FullName + "," + typeof(T).Assembly.GetName().Name;
         private readonly JsonSerializer _serializer = new JsonSerializer();
         private readonly  DbProviderFactory _factory = DbProviderFactories.GetFactory(Properties.Settings.Default.EventSourceDbProviderName);
 
-        public EventSourcedRepository()
+        public AggregateRootRepository()
         {
             _serializer.TypeNameHandling = TypeNameHandling.Objects;
             _serializer.TypeNameAssemblyFormat = FormatterAssemblyStyle.Simple;
@@ -72,11 +72,11 @@ namespace Recruiting.Data.EventStore
 
                 if (ProtectedConstructor == null)
                 {
-                    throw new NotImplementedException("Invalid or missing constructor. EventSourcedRepository needs constructor (Guid id).");
+                    throw new NotImplementedException("Invalid or missing constructor. AggregateRootRepository needs constructor (Guid id).");
                 }
                 if (ProtectedLoad == null)
                 {
-                    throw new NotImplementedException("Invalid or missing LoadFrom method. EventSourcedRepository needs protected method LoadFrom(IEnumerable<VersionedEvent> events).");
+                    throw new NotImplementedException("Invalid or missing LoadFrom method. AggregateRootRepository needs protected method LoadFrom(IEnumerable<VersionedEvent> events).");
                 }
                 var result = (T)ProtectedConstructor.Invoke(new object[] { id });
                 ProtectedLoad.Invoke(result, new object[] { events });
