@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Recruiting.ApplicationServices;
-using Recruiting.Data.InMemory;
+using Recruiting.Data.EF;
 using Recruiting.Domain;
 
 namespace Recruiting.ScenarioTests
@@ -15,7 +15,7 @@ namespace Recruiting.ScenarioTests
         [TestInitialize]
         public void Initialize()
         {
-            this.repository = new InMemoryScreeningRepository();
+            this.repository = new ScreeningRepository();
         }
 
         [TestMethod]

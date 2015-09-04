@@ -35,11 +35,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="NSubstitute, Version=1.8.2.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
       <HintPath>..\packages\NSubstitute.1.8.2.0\lib\net45\NSubstitute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,9 +71,9 @@
       <Project>{34a36459-2d40-49df-89f4-a69d31fc28e6}</Project>
       <Name>Recruiting.ApplicationServices</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Recruiting.Data.InMemory\Recruiting.Data.InMemory.csproj">
-      <Project>{F888BB72-9F84-442C-857A-DC71FF38A147}</Project>
-      <Name>Recruiting.Data.InMemory</Name>
+    <ProjectReference Include="..\Recruiting.Data.EF\Recruiting.Data.EF.csproj">
+      <Project>{8643cb48-b8f8-431a-9277-7305a6fe9a80}</Project>
+      <Name>Recruiting.Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\Recruiting.Domain\Recruiting.Domain.csproj">
       <Project>{2DDA709C-7ADF-4149-A1CF-9BD55DC6D928}</Project>
@@ -73,6 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

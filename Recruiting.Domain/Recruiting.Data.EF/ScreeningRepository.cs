@@ -8,7 +8,7 @@ namespace Recruiting.Data.EF
     {
         public string Add(Screening screening)
         {
-            using (ScreeningContext screeningContext = new ScreeningContext())
+            using (var screeningContext = new ScreeningContext())
             {
                 screeningContext.Screenings.Add(screening);
                 screeningContext.SaveChanges();
@@ -18,12 +18,15 @@ namespace Recruiting.Data.EF
 
         public IEnumerable<Screening> FindAll()
         {
-            throw new System.NotImplementedException();
+            using (var screeningContext = new ScreeningContext())
+            {
+                return screeningContext.Screenings.ToList();
+            }
         }
 
         public Screening FindById(string id)
         {
-            using (ScreeningContext screeningContext = new ScreeningContext())
+            using (var screeningContext = new ScreeningContext())
             {
                 return screeningContext.Screenings.Single(screening => screening.ID.ToString() == id);
             }
