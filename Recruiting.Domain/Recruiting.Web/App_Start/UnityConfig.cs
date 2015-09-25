@@ -2,6 +2,7 @@ using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using Recruiting.ApplicationServices;
+using Recruiting.Data.EF;
 using Recruiting.Data.InMemory;
 using Recruiting.Domain;
 
@@ -39,7 +40,7 @@ namespace Recruiting.Web.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            container.RegisterType<IScreeningRepository, InMemoryScreeningRepository>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IScreeningRepository, ScreeningRepository>(new ContainerControlledLifetimeManager());
             container.RegisterType<ScreeningService>();
         }
     }

@@ -10,9 +10,12 @@ namespace Recruiting.Data.EF
         {
             using (ScreeningContext screeningContext = new ScreeningContext())
             {
-                screeningContext.Screenings.Add(screening);
+                ScreeningDTO screeningDto = ScreeningDTO.From(screening);
+
+                screeningContext.Screenings.Add(screeningDto);
                 screeningContext.SaveChanges();
-                return screening.ID.ToString();
+
+                return screeningDto.ID.ToString();
             }
         }
 
@@ -25,7 +28,7 @@ namespace Recruiting.Data.EF
         {
             using (ScreeningContext screeningContext = new ScreeningContext())
             {
-                return screeningContext.Screenings.Single(screening => screening.ID.ToString() == id);
+                return screeningContext.Screenings.Single(screening => screening.ID.ToString() == id).ToDomain();
             }
         }
     }

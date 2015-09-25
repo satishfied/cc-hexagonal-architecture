@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Recruiting.Domain
 {
-    public class Screening
+    public sealed class Screening
     {
         #region  Fields
 

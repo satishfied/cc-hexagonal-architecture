@@ -48,13 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201507231045498_initial.cs" />
-    <Compile Include="Migrations\201507231045498_initial.Designer.cs">
-      <DependentUpon>201507231045498_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="DataObjects\ExerciseDTO.cs" />
+    <Compile Include="DataObjects\KnowledgeDomainDTO.cs" />
     <Compile Include="ScreeningContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataObjects\ScreeningDTO.cs" />
     <Compile Include="ScreeningRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,11 +64,6 @@
       <Project>{2dda709c-7adf-4149-a1cf-9bd55dc6d928}</Project>
       <Name>Recruiting.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507231045498_initial.resx">
-      <DependentUpon>201507231045498_initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
