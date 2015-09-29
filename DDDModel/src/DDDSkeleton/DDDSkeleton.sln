@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.Infrascructure.Common", "DDDSkeleton.Infrascructure.Common\DDDSkeleton.Infrascructure.Common.csproj", "{B71C74DB-793B-486A-98D6-73955B7DFA28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.Domain", "DDDSkeleton.Domain\DDDSkeleton.Domain.csproj", "{9B1E8432-1A9D-4076-BC0B-7AD8FAAB48F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B71C74DB-793B-486A-98D6-73955B7DFA28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B71C74DB-793B-486A-98D6-73955B7DFA28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B71C74DB-793B-486A-98D6-73955B7DFA28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1E8432-1A9D-4076-BC0B-7AD8FAAB48F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1E8432-1A9D-4076-BC0B-7AD8FAAB48F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1E8432-1A9D-4076-BC0B-7AD8FAAB48F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1E8432-1A9D-4076-BC0B-7AD8FAAB48F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

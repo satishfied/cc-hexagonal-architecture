@@ -2,7 +2,7 @@
 
 namespace DDDSkeleton.Infrascructure.Common.Domain
 {
-    public abstract class EntityBase<TId>
+    public abstract class EntityBase<TId> : ValidatableObject
     {
         public TId Id { get; set; }
 

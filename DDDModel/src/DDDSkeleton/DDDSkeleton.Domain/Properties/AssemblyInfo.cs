@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("DDDSkeleton.Infrascructure.Common")]
+[assembly: AssemblyTitle("DDDSkeleton.Domain")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DDDSkeleton.Infrascructure.Common")]
+[assembly: AssemblyProduct("DDDSkeleton.Domain")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("85be43af-c6ee-4e77-8a24-146ba6fa1aa1")]
+[assembly: Guid("b6b4b8d9-74d0-4c08-9a0f-ec13866b96df")]
 
 // Version information for an assembly consists of the following four values:
 //

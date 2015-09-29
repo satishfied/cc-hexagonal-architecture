@@ -1,7 +1,6 @@
 ﻿namespace DDDSkeleton.Infrascructure.Common.Domain
 {
-    public abstract class ValueObjectBase
+    public abstract class ValueObjectBase : ValidatableObject
     {
-         
     }
 }
