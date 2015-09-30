@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Screenings\GetScreeningsResponse.cs" />
     <Compile Include="Services\IScreeningService.cs" />
     <Compile Include="Messaging\IntegerRequestBase.cs" />
     <Compile Include="Messaging\ServiceRequestBase.cs" />

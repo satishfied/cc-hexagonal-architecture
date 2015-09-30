@@ -44,6 +44,19 @@ namespace DDDSkeleton.ApplicationServices.Services
             }
         }
 
+        public GetScreeningsResponse GetAllScreenings()
+        {
+            try
+            {
+                var allScreenings = _screeningRepository.FindAll();
+                return new GetScreeningsResponse {Screenings = allScreenings};
+            }
+            catch (Exception ex)
+            {
+                return new GetScreeningsResponse {Exception = ex};
+            }
+        }
+
         public InsertScreeningResponse InsertScreening(InsertScreeningRequest request)
         {
             ThrowExceptionWhenScreeningInvalid(request.Screening);
@@ -70,7 +83,7 @@ namespace DDDSkeleton.ApplicationServices.Services
                 {
                     return new UpdateScreeningResponse {Exception = GetStandardScreeningNotFoudException()};
                 }
-                
+
                 ThrowExceptionWhenScreeningInvalid(request.Screening);
 
                 _screeningRepository.Update(request.Screening);

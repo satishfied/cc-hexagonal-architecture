@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.ApplicationServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.ApplicationServices.Tests", "DDDSkeleton.ApplicationServices.Tests\DDDSkeleton.ApplicationServices.Tests.csproj", "{3DCAE921-965D-4493-AB81-58A2FD4E7494}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.WebService", "DDDSkeleton.WebService\DDDSkeleton.WebService.csproj", "{5DB717AC-292E-49AE-9D97-12AF88A658DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{3DCAE921-965D-4493-AB81-58A2FD4E7494}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DCAE921-965D-4493-AB81-58A2FD4E7494}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DCAE921-965D-4493-AB81-58A2FD4E7494}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
