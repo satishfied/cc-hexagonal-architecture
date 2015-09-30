@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13E04CF4-74B7-483E-813A-D5B8D6EDCBA8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DDDSkeleton.ApplicationServices</RootNamespace>
+    <AssemblyName>DDDSkeleton.ApplicationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Services\IScreeningService.cs" />
+    <Compile Include="Messaging\IntegerRequestBase.cs" />
+    <Compile Include="Messaging\ServiceRequestBase.cs" />
+    <Compile Include="Messaging\ServiceResponseBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screenings\DeleteScreeningRequest.cs" />
+    <Compile Include="Screenings\DeleteScreeningResponse.cs" />
+    <Compile Include="Screenings\GetScreeningRequest.cs" />
+    <Compile Include="Screenings\GetScreeningResponse.cs" />
+    <Compile Include="Screenings\InsertScreeningRequest.cs" />
+    <Compile Include="Screenings\InsertScreeningResponse.cs" />
+    <Compile Include="Screenings\UpdateScreeningRequest.cs" />
+    <Compile Include="Screenings\UpdateScreeningResponse.cs" />
+    <Compile Include="Services\ResourceNotFoundException.cs" />
+    <Compile Include="Services\ScreeningService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DDDSkeleton.Domain\DDDSkeleton.Domain.csproj">
+      <Project>{9b1e8432-1a9d-4076-bc0b-7ad8faab48f1}</Project>
+      <Name>DDDSkeleton.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DDDSkeleton.Infrascructure.Common\DDDSkeleton.Infrascructure.Common.csproj">
+      <Project>{b71c74db-793b-486a-98d6-73955b7dfa28}</Project>
+      <Name>DDDSkeleton.Infrascructure.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

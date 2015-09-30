@@ -8,5 +8,10 @@
         {
             _ruleDescription = ruleDescription;
         }
+
+        public string Description
+        {
+            get { return _ruleDescription; }
+        }
     }
 }
