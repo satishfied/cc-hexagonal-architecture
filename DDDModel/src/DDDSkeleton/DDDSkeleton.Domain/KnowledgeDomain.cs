@@ -1,11 +1,7 @@
-﻿using DDDSkeleton.Infrascructure.Common.Domain;
-
-namespace DDDSkeleton.Domain
+﻿namespace DDDSkeleton.Domain
 {
-    public class KnowledgeDomain : ValueObjectBase
+    public class KnowledgeDomain : Evaluatable
     {
-        public string Name { get; set; }
-
         protected override void Validate()
         {
             if (string.IsNullOrEmpty(Name))

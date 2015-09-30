@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Evaluatable.cs" />
+    <Compile Include="Evaluation.cs" />
     <Compile Include="KnowledgeDomain.cs" />
     <Compile Include="Excercise.cs" />
     <Compile Include="ExerciseBusinessRule.cs" />
