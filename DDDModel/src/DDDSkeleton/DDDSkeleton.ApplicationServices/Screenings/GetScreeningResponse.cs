@@ -1,9 +1,9 @@
-﻿using DDDSkeleton.Domain;
+﻿using DDDSkeleton.ApplicationServices.ViewModels;
 
 namespace DDDSkeleton.ApplicationServices.Screenings
 {
     public class GetScreeningResponse : ServiceResponseBase
     {
-        public Screening Screening { get; set; }
+        public ScreeningViewModel ScreeningViewModel { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace DDDSkeleton.WebService.Controllers
             return Request.BuildResponse(resp);
         }
 
-        // Doorgeven van een screening hier is niet ok! Hier zouden we weer mapping objecten voor nodig hebben
         public HttpResponseMessage Post(Screening screening)
         {
             var insertScreeningResponse =

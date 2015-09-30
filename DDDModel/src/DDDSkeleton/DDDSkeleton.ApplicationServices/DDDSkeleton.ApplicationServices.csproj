@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModelConversions\ConversionHelper.cs" />
     <Compile Include="Screenings\GetScreeningsResponse.cs" />
     <Compile Include="Services\IScreeningService.cs" />
     <Compile Include="Messaging\IntegerRequestBase.cs" />
@@ -55,6 +56,10 @@
     <Compile Include="Screenings\UpdateScreeningResponse.cs" />
     <Compile Include="Services\ResourceNotFoundException.cs" />
     <Compile Include="Services\ScreeningService.cs" />
+    <Compile Include="ViewModels\EvaluationViewModel.cs" />
+    <Compile Include="ViewModels\ExcerciceViewModel.cs" />
+    <Compile Include="ViewModels\KnowledgeDomainViewModel.cs" />
+    <Compile Include="ViewModels\ScreeningViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DDDSkeleton.Domain\DDDSkeleton.Domain.csproj">

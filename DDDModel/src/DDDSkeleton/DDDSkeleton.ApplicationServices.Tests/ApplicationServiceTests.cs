@@ -40,7 +40,7 @@ namespace DDDSkeleton.ApplicationServices.Tests
             CreateSut();
             var result = _service.GetScreening(request);
 
-            Assert.AreEqual(screeningId, result.Screening.Id);
+            Assert.AreEqual(screeningId, result.ScreeningViewModel.Id);
         }
 
         [TestMethod]
@@ -94,22 +94,22 @@ namespace DDDSkeleton.ApplicationServices.Tests
             var result = _service.GetScreening(new GetScreeningRequest(4));
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(location, result.Screening.Location);
-            Assert.AreEqual(candidate, result.Screening.Candidate);
-            Assert.AreEqual(recruiter, result.Screening.Recruiter);
-            Assert.AreEqual(date, result.Screening.Date);
-            Assert.AreEqual(remark, result.Screening.Remark);
-            Assert.AreEqual(globalEvaluation, result.Screening.GlobalEvaluation);
+            Assert.AreEqual(location, result.ScreeningViewModel.Location);
+            Assert.AreEqual(candidate, result.ScreeningViewModel.Candidate);
+            Assert.AreEqual(recruiter, result.ScreeningViewModel.Recruiter);
+            Assert.AreEqual(date, result.ScreeningViewModel.Date);
+            Assert.AreEqual(remark, result.ScreeningViewModel.Remark);
+            Assert.AreEqual(globalEvaluation, result.ScreeningViewModel.GlobalEvaluation);
 
-            Assert.AreEqual(1, result.Screening.Excercises.Count());
-            Assert.AreEqual(2, result.Screening.Excercises.First().Evaluations.Count());
+            Assert.AreEqual(1, result.ScreeningViewModel.ExcerciceViewModels.Count);
+            Assert.AreEqual(2, result.ScreeningViewModel.ExcerciceViewModels.First().EvaluationViewModels.Count());
 
-            var firstEvaluation = result.Screening.Excercises.First().Evaluations.First();
+            var firstEvaluation = result.ScreeningViewModel.ExcerciceViewModels.First().EvaluationViewModels.First();
             Assert.AreEqual(evaluationRemark, firstEvaluation.Remark);
-            Assert.AreEqual(Evaluation.EvaluationScores.Good, firstEvaluation.Score);
+            Assert.AreEqual((int)Evaluation.EvaluationScores.Good, firstEvaluation.Score);
 
-            Assert.AreEqual(1, result.Screening.KnowledgeDomains.Count());
-            Assert.AreEqual(0, result.Screening.KnowledgeDomains.First().Evaluations.Count());
+            Assert.AreEqual(1, result.ScreeningViewModel.KnowledgeDomainViewModels.Count());
+            Assert.AreEqual(0, result.ScreeningViewModel.KnowledgeDomainViewModels.First().EvaluationViewModels.Count());
         }
     }
 }

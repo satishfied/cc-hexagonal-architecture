@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Text;
+using DDDSkeleton.ApplicationServices.ModelConversions;
 using DDDSkeleton.ApplicationServices.Screenings;
 using DDDSkeleton.Domain;
 using DDDSkeleton.Infrascructure.Common.UnitOfWork;
@@ -32,7 +33,7 @@ namespace DDDSkeleton.ApplicationServices.Services
                 }
                 return new GetScreeningResponse
                 {
-                    Screening = screening
+                    ScreeningViewModel = screening.ConvertToViewModel()
                 };
             }
             catch (Exception ex)
@@ -49,7 +50,7 @@ namespace DDDSkeleton.ApplicationServices.Services
             try
             {
                 var allScreenings = _screeningRepository.FindAll();
-                return new GetScreeningsResponse {Screenings = allScreenings};
+                return new GetScreeningsResponse {Screenings = allScreenings.ConvertToViewModels()};
             }
             catch (Exception ex)
             {
