@@ -51,7 +51,7 @@ namespace DDDSkeleton.ApplicationServices.Tests
             const string recruiter = "Glen Van de Sande";
             var date = new DateTime(2015, 9, 30, 18, 30, 0);
             const string remark = "Schenkt lekkere Wieze's";
-            const string globalEvaluation = "Seniot biertapper";
+            const string globalEvaluation = "Senior biertapper";
 
             var screening = new Screening
             {
