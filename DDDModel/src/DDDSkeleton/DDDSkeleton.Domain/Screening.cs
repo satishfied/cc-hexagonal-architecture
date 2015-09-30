@@ -4,7 +4,7 @@ using DDDSkeleton.Infrascructure.Common.Domain;
 
 namespace DDDSkeleton.Domain
 {
-    public class Screening : EntityBase<int>
+    public class Screening : EntityBase<int>, IAggregateRoot
     {
         private readonly List<Excercise> _excercises = new List<Excercise>();
         private readonly List<KnowledgeDomain> _knowledgeDomains = new List<KnowledgeDomain>();
@@ -14,7 +14,7 @@ namespace DDDSkeleton.Domain
         public string Location { get; set; }
         public string Remark { get; set; }
         public string GlobalEvaluation { get; set; }
-
+        
         public IEnumerable<KnowledgeDomain> KnowledgeDomains
         {
             get { return _knowledgeDomains; }
