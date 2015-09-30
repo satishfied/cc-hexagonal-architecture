@@ -8,6 +8,6 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         InsertScreeningResponse InsertScreening(InsertScreeningRequest request);
         UpdateScreeningResponse UpdateScreening(UpdateScreeningRequest request);
-        DeleteScreeningResponse UpdateScreening(DeleteScreeningRequest request);
+        DeleteScreeningResponse DeleteScreening(DeleteScreeningRequest request);
     }
 }
