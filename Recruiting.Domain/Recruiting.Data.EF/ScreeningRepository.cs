@@ -21,7 +21,11 @@ namespace Recruiting.Data.EF
 
         public IEnumerable<Screening> FindAll()
         {
-            throw new System.NotImplementedException();
+            using (ScreeningContext screeningContext = new ScreeningContext())
+            {
+                return screeningContext.Screenings.ToList()
+                    .Select(screening => screening.ToDomain()).ToList();
+            }
         }
 
         public Screening FindById(string id)

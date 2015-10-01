@@ -1,15 +1,23 @@
 ﻿using System.Web.Http;
 using Recruiting.ApplicationServices;
+using Recruiting.Domain;
 
 namespace Recruiting.Web.Controllers
 {
     public class ScreeningsController : ApiController
     {
         private readonly ScreeningService screeningService;
+        private readonly IScreeningRepository screeningRepository;
 
-        public ScreeningsController(ScreeningService screeningService)
+        public ScreeningsController(ScreeningService screeningService, IScreeningRepository screeningRepository)
         {
             this.screeningService = screeningService;
+            this.screeningRepository = screeningRepository;
+        }
+
+        public IHttpActionResult Get()
+        {
+            return this.Ok(this.screeningRepository.FindAll());
         }
 
         public IHttpActionResult Get(string id)

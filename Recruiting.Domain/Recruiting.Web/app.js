@@ -17,6 +17,13 @@
     .controller('screeningsController', [
         '$scope', '$http', '$location', function ($scope, $http, $location) {
             $scope.screening = {};
+            $scope.screenings = [];
+
+
+            $http.get('http://localhost:64677/api/screenings/')
+                .then(function (response) {
+                    $scope.screenings = response.data;
+                });
 
             $scope.createScreening = function () {
                 $http.post('http://localhost:64677/api/screenings/', $scope.screening)

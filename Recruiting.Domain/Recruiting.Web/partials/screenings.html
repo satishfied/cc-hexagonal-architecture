@@ -1,4 +1,12 @@
-﻿<label for="candidate">Candidate:</label> <input type="text" id="candidate" ng-model="screening.candidate" />
-<label for="date">Date:</label> <input type="datetime-local" id="date" ng-model="screening.date" />
+﻿<div>
+    <label for="candidate">Candidate:</label> <input type="text" id="candidate" ng-model="screening.candidate"/>
+    <label for="date">Date:</label> <input type="datetime-local" id="date" ng-model="screening.date"/>
 
-<button ng-click="createScreening()">Create</button>
+    <button ng-click="createScreening()">Create</button>
+</div>
+
+<div>
+    <ul>
+        <li ng-repeat="screening in screenings">{{screening.Date | date:'dd/MM/yyyy HH:mm'}} - {{screening.Candidate}}</li>
+    </ul>
+</div>
