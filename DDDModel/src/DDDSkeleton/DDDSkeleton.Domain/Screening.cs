@@ -14,7 +14,7 @@ namespace DDDSkeleton.Domain
         public string Location { get; set; }
         public string Remark { get; set; }
         public string GlobalEvaluation { get; set; }
-        
+
         public IEnumerable<KnowledgeDomain> KnowledgeDomains
         {
             get { return _knowledgeDomains; }

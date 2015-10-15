@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using DDDSkeleton.ApplicationServices.ModelConversions;
 using DDDSkeleton.ApplicationServices.Screenings;
+using DDDSkeleton.ApplicationServices.ViewModels;
 using DDDSkeleton.Domain;
 using DDDSkeleton.Infrascructure.Common.UnitOfWork;
 
@@ -60,11 +61,12 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         public InsertScreeningResponse InsertScreening(InsertScreeningRequest request)
         {
-            ThrowExceptionWhenScreeningInvalid(request.Screening);
+            var screening = AssignAvailablepropertiesToDomain(request.Screening);
+            ThrowExceptionWhenScreeningInvalid(screening);
 
             try
             {
-                _screeningRepository.Insert(request.Screening);
+                _screeningRepository.Insert(screening);
                 _unitOfWork.Commit();
 
                 return new InsertScreeningResponse();
@@ -85,9 +87,11 @@ namespace DDDSkeleton.ApplicationServices.Services
                     return new UpdateScreeningResponse {Exception = GetStandardScreeningNotFoudException()};
                 }
 
-                ThrowExceptionWhenScreeningInvalid(request.Screening);
+                var existingScreening = AssignAvailablepropertiesToDomain(request.Screening);
+                // TODO update existing from new
+                ThrowExceptionWhenScreeningInvalid(existingScreening);
 
-                _screeningRepository.Update(request.Screening);
+                _screeningRepository.Update(existingScreening);
                 _unitOfWork.Commit();
 
                 return new UpdateScreeningResponse();
@@ -125,7 +129,12 @@ namespace DDDSkeleton.ApplicationServices.Services
             }
         }
 
-        private void ThrowExceptionWhenScreeningInvalid(Screening screening)
+        private Screening AssignAvailablepropertiesToDomain(ScreeningProperties screening)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void ThrowExceptionWhenScreeningInvalid(Screening screening)
         {
             var brokenRules = screening.GetBrokenRules().ToArray();
 

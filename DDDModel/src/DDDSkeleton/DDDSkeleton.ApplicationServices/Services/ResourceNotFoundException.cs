@@ -4,7 +4,7 @@ namespace DDDSkeleton.ApplicationServices.Services
 {
     public class ResourceNotFoundException : Exception
     {
-        public ResourceNotFoundException():base("The requested resource was not found!")
+        public ResourceNotFoundException() : base("The requested resource was not found!")
         {
         }
 

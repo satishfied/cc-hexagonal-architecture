@@ -25,14 +25,14 @@ using StructureMap;
 namespace DDDSkeleton.WebService.DependencyResolution
 {
     /// <summary>
-    /// The structure map dependency scope.
+    ///     The structure map dependency scope.
     /// </summary>
     public class StructureMapDependencyScope : ServiceLocatorImplBase, IDependencyScope
     {
         #region Constants and Fields
 
         /// <summary>
-        /// The container.
+        ///     The container.
         /// </summary>
         protected readonly IContainer Container;
 
@@ -41,10 +41,10 @@ namespace DDDSkeleton.WebService.DependencyResolution
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StructureMapDependencyScope"/> class.
+        ///     Initializes a new instance of the <see cref="StructureMapDependencyScope" /> class.
         /// </summary>
         /// <param name="container">
-        /// The container.
+        ///     The container.
         /// </param>
         /// <exception cref="ArgumentNullException">
         /// </exception>
@@ -55,7 +55,7 @@ namespace DDDSkeleton.WebService.DependencyResolution
                 throw new ArgumentNullException("container");
             }
 
-            this.Container = container;
+            Container = container;
         }
 
         #endregion
@@ -63,25 +63,25 @@ namespace DDDSkeleton.WebService.DependencyResolution
         #region Public Methods and Operators
 
         /// <summary>
-        /// The dispose.
+        ///     The dispose.
         /// </summary>
         public void Dispose()
         {
-            this.Container.Dispose();
+            Container.Dispose();
         }
 
         /// <summary>
-        /// The get services.
+        ///     The get services.
         /// </summary>
         /// <param name="serviceType">
-        /// The service type.
+        ///     The service type.
         /// </param>
         /// <returns>
-        /// The System.Collections.Generic.IEnumerable`1[T -&gt; System.Object].
+        ///     The System.Collections.Generic.IEnumerable`1[T -&gt; System.Object].
         /// </returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return this.Container.GetAllInstances(serviceType).Cast<object>();
+            return Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         #endregion
@@ -89,43 +89,43 @@ namespace DDDSkeleton.WebService.DependencyResolution
         #region Methods
 
         /// <summary>
-        /// When implemented by inheriting classes, this method will do the actual work of
-        ///        resolving all the requested service instances.
+        ///     When implemented by inheriting classes, this method will do the actual work of
+        ///     resolving all the requested service instances.
         /// </summary>
         /// <param name="serviceType">
-        /// Type of service requested.
+        ///     Type of service requested.
         /// </param>
         /// <returns>
-        /// Sequence of service instance objects.
+        ///     Sequence of service instance objects.
         /// </returns>
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            return this.Container.GetAllInstances(serviceType).Cast<object>();
+            return Container.GetAllInstances(serviceType).Cast<object>();
         }
 
         /// <summary>
-        /// When implemented by inheriting classes, this method will do the actual work of resolving
-        ///        the requested service instance.
+        ///     When implemented by inheriting classes, this method will do the actual work of resolving
+        ///     the requested service instance.
         /// </summary>
         /// <param name="serviceType">
-        /// Type of instance requested.
+        ///     Type of instance requested.
         /// </param>
         /// <param name="key">
-        /// Name of registered service you want. May be null.
+        ///     Name of registered service you want. May be null.
         /// </param>
         /// <returns>
-        /// The requested service instance.
+        ///     The requested service instance.
         /// </returns>
         protected override object DoGetInstance(Type serviceType, string key)
         {
             if (string.IsNullOrEmpty(key))
             {
                 return serviceType.IsAbstract || serviceType.IsInterface
-                           ? this.Container.TryGetInstance(serviceType)
-                           : this.Container.GetInstance(serviceType);
+                    ? Container.TryGetInstance(serviceType)
+                    : Container.GetInstance(serviceType);
             }
 
-            return this.Container.GetInstance(serviceType, key);
+            return Container.GetInstance(serviceType, key);
         }
 
         #endregion

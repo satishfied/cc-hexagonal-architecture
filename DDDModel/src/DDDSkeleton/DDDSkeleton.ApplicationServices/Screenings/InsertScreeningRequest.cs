@@ -1,9 +1,9 @@
-﻿using DDDSkeleton.Domain;
+﻿using DDDSkeleton.ApplicationServices.ViewModels;
 
 namespace DDDSkeleton.ApplicationServices.Screenings
 {
     public class InsertScreeningRequest : ServiceRequestBase
     {
-        public Screening Screening { get; set; }
+        public ScreeningProperties Screening { get; set; }
     }
 }

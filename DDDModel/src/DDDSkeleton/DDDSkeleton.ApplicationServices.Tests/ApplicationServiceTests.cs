@@ -106,7 +106,7 @@ namespace DDDSkeleton.ApplicationServices.Tests
 
             var firstEvaluation = result.ScreeningViewModel.ExcerciceViewModels.First().EvaluationViewModels.First();
             Assert.AreEqual(evaluationRemark, firstEvaluation.Remark);
-            Assert.AreEqual((int)Evaluation.EvaluationScores.Good, firstEvaluation.Score);
+            Assert.AreEqual((int) Evaluation.EvaluationScores.Good, firstEvaluation.Score);
 
             Assert.AreEqual(1, result.ScreeningViewModel.KnowledgeDomainViewModels.Count());
             Assert.AreEqual(0, result.ScreeningViewModel.KnowledgeDomainViewModels.First().EvaluationViewModels.Count());

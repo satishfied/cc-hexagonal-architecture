@@ -42,19 +42,18 @@ namespace DDDSkeleton.Repository.Memory
         {
             _unitOfWork.RegisterUpdate(aggregate, this);
         }
-        
+
         public void Insert(TDomain aggregate)
         {
             _unitOfWork.RegisterInsertion(aggregate, this);
         }
-        
+
         public void Delete(TDomain aggregate)
         {
             _unitOfWork.RegisterDeletion(aggregate, this);
         }
 
         public abstract TDatabase ConvertToDatabaseType(TDomain domainType);
-
         public abstract TDomain FindBy(TId id);
 
         private TDatabase RetrieveDatabaseTypeFrom(IAggregateRoot aggregateRoot)

@@ -6,7 +6,6 @@ namespace DDDSkeleton.ApplicationServices.Services
     {
         GetScreeningResponse GetScreening(GetScreeningRequest request);
         GetScreeningsResponse GetAllScreenings();
-
         InsertScreeningResponse InsertScreening(InsertScreeningRequest request);
         UpdateScreeningResponse UpdateScreening(UpdateScreeningRequest request);
         DeleteScreeningResponse DeleteScreening(DeleteScreeningRequest request);

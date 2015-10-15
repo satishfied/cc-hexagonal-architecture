@@ -1,4 +1,4 @@
-﻿using DDDSkeleton.Domain;
+﻿using DDDSkeleton.ApplicationServices.ViewModels;
 
 namespace DDDSkeleton.ApplicationServices.Screenings
 {
@@ -8,6 +8,6 @@ namespace DDDSkeleton.ApplicationServices.Screenings
         {
         }
 
-        public Screening Screening { get; set; }
+        public ScreeningProperties Screening { get; set; }
     }
 }

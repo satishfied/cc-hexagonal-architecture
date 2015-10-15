@@ -56,9 +56,13 @@
     <Compile Include="Screenings\UpdateScreeningResponse.cs" />
     <Compile Include="Services\ResourceNotFoundException.cs" />
     <Compile Include="Services\ScreeningService.cs" />
+    <Compile Include="ViewModels\EvaluationProperties.cs" />
     <Compile Include="ViewModels\EvaluationViewModel.cs" />
     <Compile Include="ViewModels\ExcerciceViewModel.cs" />
+    <Compile Include="ViewModels\ExcerciseProperties.cs" />
+    <Compile Include="ViewModels\KnowledgeDomainProperties.cs" />
     <Compile Include="ViewModels\KnowledgeDomainViewModel.cs" />
+    <Compile Include="ViewModels\ScreeningProperties.cs" />
     <Compile Include="ViewModels\ScreeningViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

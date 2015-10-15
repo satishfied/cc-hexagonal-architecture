@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace DDDSkeleton.WebService
 {
@@ -13,7 +14,7 @@ namespace DDDSkeleton.WebService
                 );
 
             var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.

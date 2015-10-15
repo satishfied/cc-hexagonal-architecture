@@ -17,15 +17,19 @@
 
 using System.Web.Http;
 using System.Web.Mvc;
-using StructureMap;
+using DDDSkeleton.WebService.App_Start;
 using DDDSkeleton.WebService.DependencyResolution;
+using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(DDDSkeleton.WebService.App_Start.StructuremapMvc), "Start")]
+[assembly: PreApplicationStartMethod(typeof (StructuremapMvc), "Start")]
 
-namespace DDDSkeleton.WebService.App_Start {
-    public static class StructuremapMvc {
-        public static void Start() {
-			IContainer container = IoC.Initialize();
+namespace DDDSkeleton.WebService.App_Start
+{
+    public static class StructuremapMvc
+    {
+        public static void Start()
+        {
+            var container = IoC.Initialize();
             DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = new StructureMapDependencyResolver(container);
         }

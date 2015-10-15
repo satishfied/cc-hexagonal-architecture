@@ -19,7 +19,7 @@ namespace DDDSkeleton.ApplicationServices.ModelConversions
                 Location = screening.Location,
                 Remark = screening.Remark,
                 ExcerciceViewModels = screening.Excercises.ConvertToViewModels().ToList(),
-                KnowledgeDomainViewModels = screening.KnowledgeDomains.ConvertToViewModels().ToList(),
+                KnowledgeDomainViewModels = screening.KnowledgeDomains.ConvertToViewModels().ToList()
             };
 
             return viewModel;

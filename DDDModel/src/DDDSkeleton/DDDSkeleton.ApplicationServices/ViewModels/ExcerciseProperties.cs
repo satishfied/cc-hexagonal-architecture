@@ -2,10 +2,10 @@
 
 namespace DDDSkeleton.ApplicationServices.ViewModels
 {
-    public class ExcerciceViewModel
+    public class ExcerciseProperties
     {
         public string Name { get; set; }
         public int Number { get; set; }
-        public List<EvaluationViewModel> EvaluationViewModels { get; set; }
+        public List<EvaluationProperties> EvaluationProperties { get; set; }
     }
 }

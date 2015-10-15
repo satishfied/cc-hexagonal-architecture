@@ -21,17 +21,17 @@ using StructureMap;
 namespace DDDSkeleton.WebService.DependencyResolution
 {
     /// <summary>
-    /// The structure map dependency resolver.
+    ///     The structure map dependency resolver.
     /// </summary>
     public class StructureMapDependencyResolver : StructureMapDependencyScope, IDependencyResolver
     {
         #region Constructors and Destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="StructureMapDependencyResolver"/> class.
+        ///     Initializes a new instance of the <see cref="StructureMapDependencyResolver" /> class.
         /// </summary>
         /// <param name="container">
-        /// The container.
+        ///     The container.
         /// </param>
         public StructureMapDependencyResolver(IContainer container)
             : base(container)
@@ -43,14 +43,14 @@ namespace DDDSkeleton.WebService.DependencyResolution
         #region Public Methods and Operators
 
         /// <summary>
-        /// The begin scope.
+        ///     The begin scope.
         /// </summary>
         /// <returns>
-        /// The System.Web.Http.Dependencies.IDependencyScope.
+        ///     The System.Web.Http.Dependencies.IDependencyScope.
         /// </returns>
         public IDependencyScope BeginScope()
         {
-            IContainer child = this.Container.GetNestedContainer();
+            var child = Container.GetNestedContainer();
             return new StructureMapDependencyResolver(child);
         }
 
