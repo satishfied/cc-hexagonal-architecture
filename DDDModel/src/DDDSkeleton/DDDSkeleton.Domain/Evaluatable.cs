@@ -13,7 +13,6 @@ namespace DDDSkeleton.Domain
         }
 
         public string Name { get; set; }
-        public int Number { get; set; }
 
         public void AddEvaluation(Evaluation evaluation)
         {

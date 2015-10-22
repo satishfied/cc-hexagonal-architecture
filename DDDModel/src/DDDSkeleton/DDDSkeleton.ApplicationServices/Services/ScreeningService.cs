@@ -129,9 +129,53 @@ namespace DDDSkeleton.ApplicationServices.Services
             }
         }
 
-        private Screening AssignAvailablepropertiesToDomain(ScreeningProperties screening)
+        private Screening AssignAvailablepropertiesToDomain(ScreeningProperties screeningProperties)
         {
-            throw new NotImplementedException();
+            var screening = new Screening
+            {
+                Candidate = screeningProperties.Candidate,
+                Recruiter = screeningProperties.Recruiter,
+                Date = screeningProperties.Date,
+                Location = screeningProperties.Location,
+                Remark = screeningProperties.Remark,
+                GlobalEvaluation = screeningProperties.GlobalEvaluation
+            };
+
+            foreach (var excerciseProperty in screeningProperties.ExcerciseProperties)
+            {
+                var excercice = new Excercise {Name = excerciseProperty.Name};
+                if (excerciseProperty.EvaluationProperties != null)
+                {
+                    foreach (var evaluationProperty in excerciseProperty.EvaluationProperties)
+                    {
+                        excercice.AddEvaluation(new Evaluation
+                        {
+                            Score = (Evaluation.EvaluationScores) evaluationProperty.Score,
+                            Remark = evaluationProperty.Remark
+                        });
+                    }
+                }
+                screening.AddExcercise(excercice);
+            }
+
+            foreach (var knowledgeDomainProperty in screeningProperties.KnowledgeDomainProperties)
+            {
+                var knowledgeDomain = new KnowledgeDomain {Name = knowledgeDomainProperty.Name};
+                if (knowledgeDomainProperty.EvaluationProperties != null)
+                {
+                    foreach (var evaluationProperty in knowledgeDomainProperty.EvaluationProperties)
+                    {
+                        knowledgeDomain.AddEvaluation(new Evaluation
+                        {
+                            Score = (Evaluation.EvaluationScores) evaluationProperty.Score,
+                            Remark = evaluationProperty.Remark
+                        });
+                    }
+                }
+                screening.AddKnowLedgeDomain(knowledgeDomain);
+            }
+
+            return screening;
         }
 
         private static void ThrowExceptionWhenScreeningInvalid(Screening screening)

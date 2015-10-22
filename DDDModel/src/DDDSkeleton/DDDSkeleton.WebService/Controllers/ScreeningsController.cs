@@ -3,6 +3,7 @@ using System.Web.Http;
 using DDDSkeleton.ApplicationServices;
 using DDDSkeleton.ApplicationServices.Screenings;
 using DDDSkeleton.ApplicationServices.Services;
+using DDDSkeleton.ApplicationServices.ViewModels;
 using DDDSkeleton.Domain;
 using DDDSkeleton.WebService.Helpers;
 
@@ -29,7 +30,7 @@ namespace DDDSkeleton.WebService.Controllers
             return Request.BuildResponse(resp);
         }
 
-        public HttpResponseMessage Post(Screening screening)
+        public HttpResponseMessage Post(ScreeningProperties screening)
         {
             var insertScreeningResponse =
                 _screeningService.InsertScreening(new InsertScreeningRequest {Screening = screening});

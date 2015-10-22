@@ -35,7 +35,6 @@ namespace DDDSkeleton.ApplicationServices.ModelConversions
             var viewModel = new ExcerciceViewModel
             {
                 Name = excercise.Name,
-                Number = excercise.Number,
                 EvaluationViewModels = excercise.Evaluations.ConvertToViewModels().ToList()
             };
 
@@ -52,7 +51,6 @@ namespace DDDSkeleton.ApplicationServices.ModelConversions
             var viewModel = new KnowledgeDomainViewModel
             {
                 Name = domain.Name,
-                Number = domain.Number,
                 EvaluationViewModels = domain.Evaluations.ConvertToViewModels().ToList()
             };
 

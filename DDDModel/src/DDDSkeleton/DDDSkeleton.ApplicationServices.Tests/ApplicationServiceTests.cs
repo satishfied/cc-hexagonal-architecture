@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DDDSkeleton.ApplicationServices.Screenings;
 using DDDSkeleton.ApplicationServices.Services;
+using DDDSkeleton.ApplicationServices.ViewModels;
 using DDDSkeleton.Domain;
 using DDDSkeleton.Infrascructure.Common.UnitOfWork;
 using DDDSkeleton.Repository.Memory;
@@ -53,7 +55,7 @@ namespace DDDSkeleton.ApplicationServices.Tests
             const string remark = "Schenkt lekkere Wieze's";
             const string globalEvaluation = "Senior biertapper";
 
-            var screening = new Screening
+            var screening = new ScreeningProperties
             {
                 Location = location,
                 Candidate = candidate,
@@ -63,26 +65,29 @@ namespace DDDSkeleton.ApplicationServices.Tests
                 GlobalEvaluation = globalEvaluation
             };
 
-            var excercise = new Excercise {Name = "Schenken bier"};
+            var excercise = new ExcerciseProperties
+            {
+                Name = "Schenken bier"
+            };
+            
             const string evaluationRemark = "Schenkt grote pinten";
-            var evaluation1 = new Evaluation
+            var evaluation1 = new EvaluationProperties
             {
                 Remark = evaluationRemark,
-                Score = Evaluation.EvaluationScores.Good
+                Score = (int)Evaluation.EvaluationScores.Good
             };
-            excercise.AddEvaluation(evaluation1);
 
-            var evaluation2 = new Evaluation
+            var evaluation2 = new EvaluationProperties
             {
                 Remark = "Schenkt groede Wieze's",
-                Score = Evaluation.EvaluationScores.Neutral
+                Score = (int)Evaluation.EvaluationScores.Neutral
             };
-            excercise.AddEvaluation(evaluation2);
-            screening.AddExcercise(excercise);
 
-            var knowledgeDomain = new KnowledgeDomain();
-            excercise.Name = "Schenken van een Wieze";
-            screening.AddKnowLedgeDomain(knowledgeDomain);
+            excercise.EvaluationProperties = new List<EvaluationProperties> {evaluation1, evaluation2};
+            screening.ExcerciseProperties = new List<ExcerciseProperties> { excercise };
+
+            var knowledgeDomain = new KnowledgeDomainProperties {Name = "Schenken van een Wieze"};
+            screening.KnowledgeDomainProperties = new List<KnowledgeDomainProperties> { knowledgeDomain };
 
             var request = new InsertScreeningRequest
             {

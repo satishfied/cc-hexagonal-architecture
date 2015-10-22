@@ -35,6 +35,16 @@ namespace DDDSkeleton.Domain
             _excercises.Add(excercise);
         }
 
+        public void ClearExercises()
+        {
+            _excercises.Clear();
+        }
+
+        public void ClearKnowledgeDomains()
+        {
+            _knowledgeDomains.Clear();
+        }
+
         protected override void Validate()
         {
             if (string.IsNullOrEmpty(Candidate))
