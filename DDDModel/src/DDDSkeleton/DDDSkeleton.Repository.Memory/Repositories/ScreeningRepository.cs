@@ -127,21 +127,46 @@ namespace DDDSkeleton.Repository.Memory.Repositories
                 GlobalEvaluation = databaseScreening.GlobalEvaluation
             };
 
+            var excercices = new Dictionary<string, Excercise>();
+            var knowledgeDomains = new Dictionary<string, KnowledgeDomain>();
+
             foreach (var databaseSceeningAspect in databaseScreening.Aspects)
             {
                 if ((DatabaseSceeningAspect.AspectTypes) databaseSceeningAspect.AspectType ==
                     DatabaseSceeningAspect.AspectTypes.Excercise)
                 {
-                    var excercise = CreateExcercise(databaseSceeningAspect);
-                    screening.AddExcercise(excercise);
+                    if (!excercices.ContainsKey(databaseSceeningAspect.Name))
+                    {
+                        excercices.Add(databaseSceeningAspect.Name, CreateExcercise(databaseSceeningAspect));
+                    }
+                    else
+                    {
+                        Excercise excercise = excercices[databaseSceeningAspect.Name];
+                        excercise.AddEvaluation(CreateEvaluation(databaseSceeningAspect));
+                    }
                 }
                 else
                 {
-                    var knowledgeDomain = CreateKnowledgeDomain(databaseSceeningAspect);
-                    screening.AddKnowLedgeDomain(knowledgeDomain);
+                    if (!knowledgeDomains.ContainsKey(databaseSceeningAspect.Name))
+                    {
+                        knowledgeDomains.Add(databaseSceeningAspect.Name, CreateKnowledgeDomain(databaseSceeningAspect));
+                    }
+                    else
+                    {
+                        KnowledgeDomain domain = knowledgeDomains[databaseSceeningAspect.Name];
+                        domain.AddEvaluation(CreateEvaluation(databaseSceeningAspect));
+                    }
                 }
             }
-
+            foreach (var knowledgeDomain in knowledgeDomains.Values)
+            {
+                screening.AddKnowLedgeDomain(knowledgeDomain);
+            }
+            
+            foreach (var excercise in excercices.Values)
+            {
+                screening.AddExcercise(excercise);
+            }
             return screening;
         }
 
