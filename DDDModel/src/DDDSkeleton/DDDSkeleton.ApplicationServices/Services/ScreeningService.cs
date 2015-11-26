@@ -131,15 +131,12 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         private Screening AssignAvailablepropertiesToDomain(ScreeningProperties screeningProperties)
         {
-            var screening = new Screening
-            {
-                Candidate = screeningProperties.Candidate,
-                Recruiter = screeningProperties.Recruiter,
-                Date = screeningProperties.Date,
-                Location = screeningProperties.Location,
-                Remark = screeningProperties.Remark,
-                GlobalEvaluation = screeningProperties.GlobalEvaluation
-            };
+            var screening = Screening.Create(screeningProperties.Candidate);
+             screening.Recruiter = screeningProperties.Recruiter;
+             screening.Date = screeningProperties.Date;
+             screening.Location = screeningProperties.Location;
+             screening.Remark = screeningProperties.Remark;
+            screening.GlobalEvaluation = screeningProperties.GlobalEvaluation;
 
             foreach (var excerciseProperty in screeningProperties.ExcerciseProperties)
             {

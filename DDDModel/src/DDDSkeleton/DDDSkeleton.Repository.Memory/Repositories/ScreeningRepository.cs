@@ -17,8 +17,8 @@ namespace DDDSkeleton.Repository.Memory.Repositories
         {
             var databaseScreening =
                 (from sc in ObjectContextFactory.Create().DatabaseScreenings
-                    where sc.Id == id
-                    select sc).FirstOrDefault();
+                 where sc.Id == id
+                 select sc).FirstOrDefault();
 
             return databaseScreening != null ? ConvertToDomain(databaseScreening) : null;
         }
@@ -26,7 +26,8 @@ namespace DDDSkeleton.Repository.Memory.Repositories
         public IEnumerable<Screening> FindAll()
         {
             var allDatabaseScreenings =
-                (from sc in ObjectContextFactory.Create().DatabaseScreenings select sc).ToList();
+                (from sc in ObjectContextFactory.Create().DatabaseScreenings
+                 select sc).ToList();
 
             return allDatabaseScreenings.Select(ConvertToDomain).ToList();
         }
@@ -51,7 +52,7 @@ namespace DDDSkeleton.Repository.Memory.Repositories
                 {
                     databaseScreening.Aspects.Add(new DatabaseSceeningAspect
                     {
-                        AspectType = (int) DatabaseSceeningAspect.AspectTypes.Excercise,
+                        AspectType = (int)DatabaseSceeningAspect.AspectTypes.Excercise,
                         Name = excercise.Name
                     });
                 }
@@ -72,7 +73,7 @@ namespace DDDSkeleton.Repository.Memory.Repositories
                 {
                     databaseScreening.Aspects.Add(new DatabaseSceeningAspect
                     {
-                        AspectType = (int) DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                        AspectType = (int)DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
                         Name = knowledgeDomain.Name
                     });
                 }
@@ -95,9 +96,9 @@ namespace DDDSkeleton.Repository.Memory.Repositories
         {
             return new DatabaseSceeningAspect
             {
-                AspectType = (int) DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                AspectType = (int)DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
                 Name = knowledgeDomain.Name,
-                Score = (int) evaluation.Score,
+                Score = (int)evaluation.Score,
                 Remark = evaluation.Remark
             };
         }
@@ -107,25 +108,22 @@ namespace DDDSkeleton.Repository.Memory.Repositories
         {
             return new DatabaseSceeningAspect
             {
-                AspectType = (int) DatabaseSceeningAspect.AspectTypes.Excercise,
+                AspectType = (int)DatabaseSceeningAspect.AspectTypes.Excercise,
                 Name = excercise.Name,
-                Score = (int) evaluation.Score,
+                Score = (int)evaluation.Score,
                 Remark = evaluation.Remark
             };
         }
 
         private Screening ConvertToDomain(DatabaseScreening databaseScreening)
         {
-            var screening = new Screening
-            {
-                Id = databaseScreening.Id,
-                Candidate = databaseScreening.Candidate,
-                Recruiter = databaseScreening.Recruiter,
-                Location = databaseScreening.Location,
-                Date = databaseScreening.Date,
-                Remark = databaseScreening.Remark,
-                GlobalEvaluation = databaseScreening.GlobalEvaluation
-            };
+            var screening = Screening.Create(databaseScreening.Candidate);
+            screening.Id = databaseScreening.Id;
+            screening.Recruiter = databaseScreening.Recruiter;
+            screening.Location = databaseScreening.Location;
+            screening.Date = databaseScreening.Date;
+            screening.Remark = databaseScreening.Remark;
+            screening.GlobalEvaluation = databaseScreening.GlobalEvaluation;
 
             var excercices = new Dictionary<string, Excercise>();
             var knowledgeDomains = new Dictionary<string, KnowledgeDomain>();
@@ -203,7 +201,7 @@ namespace DDDSkeleton.Repository.Memory.Repositories
             var evalution = new Evaluation
             {
                 Remark = databaseSceeningAspect.Remark,
-                Score = (Evaluation.EvaluationScores) databaseSceeningAspect.Score
+                Score = (Evaluation.EvaluationScores)databaseSceeningAspect.Score
             };
             return evalution;
         }

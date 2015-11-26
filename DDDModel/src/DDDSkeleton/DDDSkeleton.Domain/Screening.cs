@@ -6,9 +6,20 @@ namespace DDDSkeleton.Domain
 {
     public class Screening : EntityBase<int>, IAggregateRoot
     {
+        private readonly string _candidate;
         private readonly List<Excercise> _excercises = new List<Excercise>();
         private readonly List<KnowledgeDomain> _knowledgeDomains = new List<KnowledgeDomain>();
-        public string Candidate { get; set; }
+
+        private Screening(string candidate)
+        {
+            _candidate = candidate;
+        }
+
+        public string Candidate
+        {
+            get { return _candidate; }
+        }
+
         public string Recruiter { get; set; }
         public DateTime Date { get; set; }
         public string Location { get; set; }
@@ -23,6 +34,21 @@ namespace DDDSkeleton.Domain
         public IEnumerable<Excercise> Excercises
         {
             get { return _excercises; }
+        }
+
+        public static Screening Create(string candidate)
+        {
+            if (string.IsNullOrEmpty(candidate))
+            {
+                throw new ArgumentNullException("candidate");
+            }
+
+            return new Screening(candidate);
+        }
+        
+        public static Screening Load(string candidate)
+        {
+            return new Screening(candidate);
         }
 
         public void AddKnowLedgeDomain(KnowledgeDomain knowledgeDomain)
