@@ -32,6 +32,7 @@ namespace DDDSkeleton.ApplicationServices.Services
                         Exception = GetStandardScreeningNotFoudException()
                     };
                 }
+
                 return new GetScreeningResponse
                 {
                     ScreeningViewModel = screening.ConvertToViewModel()
@@ -61,7 +62,9 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         public InsertScreeningResponse InsertScreening(InsertScreeningRequest request)
         {
-            var screening = AssignAvailablepropertiesToDomain(request.Screening);
+            var screening = Screening.Create(request.Screening.Candidate);
+
+            AssignAvailablepropertiesToDomain(screening,  request.Screening);
             ThrowExceptionWhenScreeningInvalid(screening);
 
             try
@@ -87,11 +90,11 @@ namespace DDDSkeleton.ApplicationServices.Services
                     return new UpdateScreeningResponse {Exception = GetStandardScreeningNotFoudException()};
                 }
 
-                var existingScreening = AssignAvailablepropertiesToDomain(request.Screening);
-                // TODO update existing from new
-                ThrowExceptionWhenScreeningInvalid(existingScreening);
+                // bestaande updaten
+                AssignAvailablepropertiesToDomain(screening, request.Screening);
+                ThrowExceptionWhenScreeningInvalid(screening);
 
-                _screeningRepository.Update(existingScreening);
+                _screeningRepository.Update(screening);
                 _unitOfWork.Commit();
 
                 return new UpdateScreeningResponse();
@@ -129,9 +132,8 @@ namespace DDDSkeleton.ApplicationServices.Services
             }
         }
 
-        private Screening AssignAvailablepropertiesToDomain(ScreeningProperties screeningProperties)
+        private void AssignAvailablepropertiesToDomain(Screening screening, ScreeningProperties screeningProperties)
         {
-            var screening = Screening.Create(screeningProperties.Candidate);
              screening.Recruiter = screeningProperties.Recruiter;
              screening.Date = screeningProperties.Date;
              screening.Location = screeningProperties.Location;
@@ -171,8 +173,6 @@ namespace DDDSkeleton.ApplicationServices.Services
                 }
                 screening.AddKnowLedgeDomain(knowledgeDomain);
             }
-
-            return screening;
         }
 
         private static void ThrowExceptionWhenScreeningInvalid(Screening screening)

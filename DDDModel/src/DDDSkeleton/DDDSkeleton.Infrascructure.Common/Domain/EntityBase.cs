@@ -4,7 +4,12 @@ namespace DDDSkeleton.Infrascructure.Common.Domain
 {
     public abstract class EntityBase<TId> : ValidatableObject
     {
-        public TId Id { get; set; }
+        protected EntityBase(TId id)
+        {
+            Id = id;
+        }
+
+        public TId Id { get; private set; }
 
         public override bool Equals(object entity)
         {

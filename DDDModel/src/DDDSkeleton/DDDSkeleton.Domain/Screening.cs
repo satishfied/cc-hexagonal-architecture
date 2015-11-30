@@ -10,7 +10,7 @@ namespace DDDSkeleton.Domain
         private readonly List<Excercise> _excercises = new List<Excercise>();
         private readonly List<KnowledgeDomain> _knowledgeDomains = new List<KnowledgeDomain>();
 
-        private Screening(string candidate)
+        private Screening(int id, string candidate) : base(id)
         {
             _candidate = candidate;
         }
@@ -43,12 +43,12 @@ namespace DDDSkeleton.Domain
                 throw new ArgumentNullException("candidate");
             }
 
-            return new Screening(candidate);
+            return new Screening(0, candidate);
         }
-        
-        public static Screening Load(string candidate)
+
+        public static Screening Load(int id, string candidate)
         {
-            return new Screening(candidate);
+            return new Screening(id, candidate);
         }
 
         public void AddKnowLedgeDomain(KnowledgeDomain knowledgeDomain)

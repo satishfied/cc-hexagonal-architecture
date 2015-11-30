@@ -117,8 +117,7 @@ namespace DDDSkeleton.Repository.Memory.Repositories
 
         private Screening ConvertToDomain(DatabaseScreening databaseScreening)
         {
-            var screening = Screening.Create(databaseScreening.Candidate);
-            screening.Id = databaseScreening.Id;
+            var screening = Screening.Load(databaseScreening.Id, databaseScreening.Candidate);
             screening.Recruiter = databaseScreening.Recruiter;
             screening.Location = databaseScreening.Location;
             screening.Date = databaseScreening.Date;
