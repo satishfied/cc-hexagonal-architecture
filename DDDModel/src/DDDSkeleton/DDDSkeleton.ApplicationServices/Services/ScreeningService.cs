@@ -64,7 +64,7 @@ namespace DDDSkeleton.ApplicationServices.Services
         {
             var screening = Screening.Create(request.Screening.Candidate);
 
-            AssignAvailablepropertiesToDomain(screening,  request.Screening);
+            AssignAvailablepropertiesToDomain(screening, request.Screening);
             ThrowExceptionWhenScreeningInvalid(screening);
 
             try
@@ -134,10 +134,10 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         private void AssignAvailablepropertiesToDomain(Screening screening, ScreeningProperties screeningProperties)
         {
-             screening.Recruiter = screeningProperties.Recruiter;
-             screening.Date = screeningProperties.Date;
-             screening.Location = screeningProperties.Location;
-             screening.Remark = screeningProperties.Remark;
+            screening.Recruiter = screeningProperties.Recruiter;
+            screening.Date = screeningProperties.Date;
+            screening.Location = screeningProperties.Location;
+            screening.Remark = screeningProperties.Remark;
             screening.GlobalEvaluation = screeningProperties.GlobalEvaluation;
 
             foreach (var excerciseProperty in screeningProperties.ExcerciseProperties)
