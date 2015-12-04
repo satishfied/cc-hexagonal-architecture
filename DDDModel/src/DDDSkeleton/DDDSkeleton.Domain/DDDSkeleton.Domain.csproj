@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EvaluationBuilder.cs" />
+    <Compile Include="KnowledgeDomainBuilder.cs" />
+    <Compile Include="ExcerciseBuilder.cs" />
+    <Compile Include="ScreeningBuilder.cs" />
     <Compile Include="Evaluatable.cs" />
     <Compile Include="Evaluation.cs" />
     <Compile Include="IScreeningRepository.cs" />

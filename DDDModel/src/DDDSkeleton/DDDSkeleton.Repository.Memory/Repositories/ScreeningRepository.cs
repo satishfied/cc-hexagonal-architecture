@@ -169,10 +169,8 @@ namespace DDDSkeleton.Repository.Memory.Repositories
 
         private static KnowledgeDomain CreateKnowledgeDomain(DatabaseSceeningAspect databaseSceeningAspect)
         {
-            var knowledgeDomain = new KnowledgeDomain
-            {
-                Name = databaseSceeningAspect.Name
-            };
+            var knowledgeDomain = KnowledgeDomainBuilder.Create(databaseSceeningAspect.Name)
+                .Build();
 
             if (databaseSceeningAspect.Remark != null)
             {
@@ -183,25 +181,24 @@ namespace DDDSkeleton.Repository.Memory.Repositories
 
         private static Excercise CreateExcercise(DatabaseSceeningAspect databaseSceeningAspect)
         {
-            var excercise = new Excercise
-            {
-                Name = databaseSceeningAspect.Name
-            };
+            var excercise = ExcerciseBuilder.Create(databaseSceeningAspect.Name)
+                .Build();
 
             if (databaseSceeningAspect.Remark != null)
             {
                 excercise.AddEvaluation(CreateEvaluation(databaseSceeningAspect));
             }
+
             return excercise;
         }
 
         private static Evaluation CreateEvaluation(DatabaseSceeningAspect databaseSceeningAspect)
         {
-            var evalution = new Evaluation
-            {
-                Remark = databaseSceeningAspect.Remark,
-                Score = (Evaluation.EvaluationScores)databaseSceeningAspect.Score
-            };
+            var evalution = EvaluationBuilder.Create()
+                .WithRemark(databaseSceeningAspect.Remark)
+                .WithScores((Evaluation.EvaluationScores) databaseSceeningAspect.Score)
+                .Build();
+
             return evalution;
         }
     }

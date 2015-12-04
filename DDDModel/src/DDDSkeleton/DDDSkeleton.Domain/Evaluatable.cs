@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using DDDSkeleton.Infrascructure.Common.Domain;
 
 namespace DDDSkeleton.Domain
 {
-    public abstract class Evaluatable : ValueObjectBase
+    public abstract class Evaluatable
     {
         private readonly List<Evaluation> _evaluations = new List<Evaluation>();
 

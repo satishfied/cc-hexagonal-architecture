@@ -1,13 +1,27 @@
-﻿namespace DDDSkeleton.Domain
+﻿using System;
+
+namespace DDDSkeleton.Domain
 {
     public class KnowledgeDomain : Evaluatable
     {
-        protected override void Validate()
+        private KnowledgeDomain(string name)
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(name))
             {
-                AddBrokenRule(KnowledgeDomainBusinessRule.KnowledgeDomainNameRequired);
+                throw new ArgumentNullException("name");
             }
+
+            Name = name;
+        }
+
+        public static KnowledgeDomain Create(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            return new KnowledgeDomain(name);
         }
     }
 }

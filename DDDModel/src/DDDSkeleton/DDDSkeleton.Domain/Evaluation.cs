@@ -1,8 +1,6 @@
-﻿using DDDSkeleton.Infrascructure.Common.Domain;
-
-namespace DDDSkeleton.Domain
+﻿namespace DDDSkeleton.Domain
 {
-    public class Evaluation : ValueObjectBase
+    public class Evaluation
     {
         public enum EvaluationScores
         {
@@ -12,10 +10,7 @@ namespace DDDSkeleton.Domain
         }
 
         public string Remark { get; set; }
-        public EvaluationScores Score { get; set; }
 
-        protected override void Validate()
-        {
-        }
+        public EvaluationScores Score { get; set; }
     }
 }

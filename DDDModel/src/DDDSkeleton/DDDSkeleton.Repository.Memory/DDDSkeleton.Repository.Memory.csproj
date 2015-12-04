@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseSceeningAspect.cs" />
     <Compile Include="Database\DatabaseScreening.cs" />
+    <Compile Include="Database\IDatabaseScreening.cs" />
     <Compile Include="Database\InMemoryDatabaseObjectContext.cs" />
     <Compile Include="Database\IObjectContextFactory.cs" />
     <Compile Include="Database\LazySingletonObjectContextFactory.cs" />

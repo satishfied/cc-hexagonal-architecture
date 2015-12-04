@@ -62,10 +62,57 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         public InsertScreeningResponse InsertScreening(InsertScreeningRequest request)
         {
-            var screening = Screening.Create(request.Screening.Candidate);
+            var input = request.Screening;
 
-            AssignAvailablepropertiesToDomain(screening, request.Screening);
-            ThrowExceptionWhenScreeningInvalid(screening);
+            var screening = ScreeningBuilder.CreateScreening(input.Candidate)
+                .ByRecruiter(input.Recruiter)
+                .OnLocation(input.Location)
+                .OnDate(input.Date)
+                .WithGlobalEvaluation(input.GlobalEvaluation)
+                .WithRemark(input.Remark)
+                .Build();
+
+            foreach (var knowledgeDomainProperties in request.Screening.KnowledgeDomainProperties)
+            {
+                var knowledgeDomain = KnowledgeDomainBuilder.Create(knowledgeDomainProperties.Name)
+                    .Build();
+
+                if (knowledgeDomainProperties.EvaluationProperties != null)
+                {
+                    foreach (var evaluationProperties in knowledgeDomainProperties.EvaluationProperties)
+                    {
+                        var evaluation = EvaluationBuilder.Create()
+                            .WithRemark(evaluationProperties.Remark)
+                            .WithScores((Evaluation.EvaluationScores) evaluationProperties.Score)
+                            .Build();
+
+                        knowledgeDomain.AddEvaluation(evaluation);
+                    }
+                }
+
+                screening.AddKnowLedgeDomain(knowledgeDomain);
+            }
+
+            foreach (var excerciseProperties in request.Screening.ExcerciseProperties)
+            {
+                var excercise = ExcerciseBuilder.Create(excerciseProperties.Name)
+                    .Build();
+
+                if (excerciseProperties.EvaluationProperties != null)
+                {
+                    foreach (var evaluationProperties in excerciseProperties.EvaluationProperties)
+                    {
+                        var evaluation = EvaluationBuilder.Create()
+                            .WithRemark(evaluationProperties.Remark)
+                            .WithScores((Evaluation.EvaluationScores) evaluationProperties.Score)
+                            .Build();
+
+                        excercise.AddEvaluation(evaluation);
+                    }
+
+                    screening.AddExcercise(excercise);
+                }
+            }
 
             try
             {
@@ -142,16 +189,19 @@ namespace DDDSkeleton.ApplicationServices.Services
 
             foreach (var excerciseProperty in screeningProperties.ExcerciseProperties)
             {
-                var excercice = new Excercise {Name = excerciseProperty.Name};
+                var excercice = ExcerciseBuilder.Create(excerciseProperty.Name)
+                    .Build();
+
                 if (excerciseProperty.EvaluationProperties != null)
                 {
                     foreach (var evaluationProperty in excerciseProperty.EvaluationProperties)
                     {
-                        excercice.AddEvaluation(new Evaluation
-                        {
-                            Score = (Evaluation.EvaluationScores) evaluationProperty.Score,
-                            Remark = evaluationProperty.Remark
-                        });
+                        var evaluation = EvaluationBuilder.Create()
+                            .WithRemark(evaluationProperty.Remark)
+                            .WithScores((Evaluation.EvaluationScores) evaluationProperty.Score)
+                            .Build();
+
+                        excercice.AddEvaluation(evaluation);
                     }
                 }
                 screening.AddExcercise(excercice);
@@ -159,16 +209,19 @@ namespace DDDSkeleton.ApplicationServices.Services
 
             foreach (var knowledgeDomainProperty in screeningProperties.KnowledgeDomainProperties)
             {
-                var knowledgeDomain = new KnowledgeDomain {Name = knowledgeDomainProperty.Name};
+                var knowledgeDomain = KnowledgeDomainBuilder.Create(knowledgeDomainProperty.Name)
+                    .Build();
+
                 if (knowledgeDomainProperty.EvaluationProperties != null)
                 {
                     foreach (var evaluationProperty in knowledgeDomainProperty.EvaluationProperties)
                     {
-                        knowledgeDomain.AddEvaluation(new Evaluation
-                        {
-                            Score = (Evaluation.EvaluationScores) evaluationProperty.Score,
-                            Remark = evaluationProperty.Remark
-                        });
+                        var evaluation = EvaluationBuilder.Create()
+                            .WithRemark(evaluationProperty.Remark)
+                            .WithScores((Evaluation.EvaluationScores) evaluationProperty.Score)
+                            .Build();
+
+                        knowledgeDomain.AddEvaluation(evaluation);
                     }
                 }
                 screening.AddKnowLedgeDomain(knowledgeDomain);

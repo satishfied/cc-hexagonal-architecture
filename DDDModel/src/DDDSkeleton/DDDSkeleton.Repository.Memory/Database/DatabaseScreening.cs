@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace DDDSkeleton.Repository.Memory.Database
 {
-    public class DatabaseScreening
+    public class DatabaseScreening : IDatabaseScreening
     {
         public int Id { get; set; }
         public string Candidate { get; set; }

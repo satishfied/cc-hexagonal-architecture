@@ -1,13 +1,27 @@
-﻿namespace DDDSkeleton.Domain
+﻿using System;
+
+namespace DDDSkeleton.Domain
 {
     public class Excercise : Evaluatable
     {
-        protected override void Validate()
+        private Excercise(string name)
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(name))
             {
-                AddBrokenRule(ExerciseBusinessRule.ExerciseNameRequired);
+                throw new ArgumentNullException("name");
             }
+
+            Name = name;
+        }
+
+        public static Excercise Create(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentNullException("name");
+            }
+
+            return new Excercise(name);
         }
     }
 }
