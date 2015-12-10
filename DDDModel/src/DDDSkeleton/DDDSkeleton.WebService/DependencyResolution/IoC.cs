@@ -18,7 +18,6 @@
 
 using DDDSkeleton.ApplicationServices.Services;
 using DDDSkeleton.Domain;
-using DDDSkeleton.Infrascructure.Common.Domain;
 using DDDSkeleton.Infrascructure.Common.UnitOfWork;
 using DDDSkeleton.Repository.Memory;
 using DDDSkeleton.Repository.Memory.Database;
