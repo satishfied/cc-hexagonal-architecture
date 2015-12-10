@@ -20,6 +20,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.ApplicationServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.WebService", "DDDSkeleton.WebService\DDDSkeleton.WebService.csproj", "{5DB717AC-292E-49AE-9D97-12AF88A658DF}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DDDSkeleton.Database", "DDDSkeleton.Database\DDDSkeleton.Database.sqlproj", "{F971C75C-A747-4FA6-A9F1-97B421807BBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSkeleton.Repository.SqlServer", "DDDSkeleton.Repository.SqlServer\DDDSkeleton.Repository.SqlServer.csproj", "{63BE363C-94CD-4D75-8BC4-2283E4F77D24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +54,16 @@ Global
 		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DB717AC-292E-49AE-9D97-12AF88A658DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F971C75C-A747-4FA6-A9F1-97B421807BBA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{63BE363C-94CD-4D75-8BC4-2283E4F77D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63BE363C-94CD-4D75-8BC4-2283E4F77D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63BE363C-94CD-4D75-8BC4-2283E4F77D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63BE363C-94CD-4D75-8BC4-2283E4F77D24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text;
 using DDDSkeleton.ApplicationServices.ModelConversions;
 using DDDSkeleton.ApplicationServices.Screenings;
 using DDDSkeleton.ApplicationServices.ViewModels;

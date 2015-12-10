@@ -12,6 +12,6 @@ namespace DDDSkeleton.Repository.Memory.Database
         public string Location { get; set; }
         public string Remark { get; set; }
         public string GlobalEvaluation { get; set; }
-        public List<DatabaseSceeningAspect> Aspects { get; set; }
+        public List<DatabaseScreeningAspect> Aspects { get; set; }
     }
 }

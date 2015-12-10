@@ -1,11 +1,11 @@
 ﻿namespace DDDSkeleton.Repository.Memory.Database
 {
-    public class DatabaseSceeningAspect
+    public class DatabaseScreeningAspect
     {
         public enum AspectTypes
         {
             Excercise,
-            KnwoledgeDomain
+            KnowledgeDomain
         }
 
         public string Name { get; set; }

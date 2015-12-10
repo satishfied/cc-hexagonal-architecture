@@ -56,7 +56,7 @@ namespace DDDSkeleton.Repository.Memory.Database
 
             foreach (var databaseSceeningAspect in screening.Aspects)
             {
-                var aspect = new DatabaseSceeningAspect
+                var aspect = new DatabaseScreeningAspect
                 {
                     Name = databaseSceeningAspect.Name,
                     Remark = databaseSceeningAspect.Remark,
@@ -92,19 +92,19 @@ namespace DDDSkeleton.Repository.Memory.Database
 
         private static DatabaseScreening StubFirstScreening()
         {
-            var aspects = new List<DatabaseSceeningAspect>
+            var aspects = new List<DatabaseScreeningAspect>
             {
-                new DatabaseSceeningAspect
+                new DatabaseScreeningAspect
                 {
                     Name = "Sum of squares",
-                    AspectType = (int) DatabaseSceeningAspect.AspectTypes.Excercise,
+                    AspectType = (int) DatabaseScreeningAspect.AspectTypes.Excercise,
                     Remark = "Kennis van linq beperkt",
                     Score = (int) Evaluation.EvaluationScores.Bad
                 },
-                new DatabaseSceeningAspect
+                new DatabaseScreeningAspect
                 {
                     Name = "Sum of squares",
-                    AspectType = (int) DatabaseSceeningAspect.AspectTypes.Excercise,
+                    AspectType = (int) DatabaseScreeningAspect.AspectTypes.Excercise,
                     Remark = "Kent POW",
                     Score = (int) Evaluation.EvaluationScores.Good
                 }
@@ -127,12 +127,12 @@ namespace DDDSkeleton.Repository.Memory.Database
 
         private static DatabaseScreening StubSecondScreening()
         {
-            var aspects = new List<DatabaseSceeningAspect>
+            var aspects = new List<DatabaseScreeningAspect>
             {
-                new DatabaseSceeningAspect
+                new DatabaseScreeningAspect
                 {
                     Name = "Oracle",
-                    AspectType = (int) DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                    AspectType = (int) DatabaseScreeningAspect.AspectTypes.KnowledgeDomain,
                     Remark = "Goede kennis van SQL",
                     Score = (int) Evaluation.EvaluationScores.Good
                 }
@@ -155,19 +155,19 @@ namespace DDDSkeleton.Repository.Memory.Database
 
         private static DatabaseScreening StubThirdScreening()
         {
-            var aspects = new List<DatabaseSceeningAspect>
+            var aspects = new List<DatabaseScreeningAspect>
             {
-                new DatabaseSceeningAspect
+                new DatabaseScreeningAspect
                 {
                     Name = "REST",
-                    AspectType = (int) DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                    AspectType = (int) DatabaseScreeningAspect.AspectTypes.KnowledgeDomain,
                     Remark = "Goede kennis van Web Api",
                     Score = (int) Evaluation.EvaluationScores.Good
                 },
-                new DatabaseSceeningAspect
+                new DatabaseScreeningAspect
                 {
                     Name = "REST",
-                    AspectType = (int) DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                    AspectType = (int) DatabaseScreeningAspect.AspectTypes.KnowledgeDomain,
                     Remark = "Kent het RMM model met HATEOAS",
                     Score = (int) Evaluation.EvaluationScores.Good
                 }

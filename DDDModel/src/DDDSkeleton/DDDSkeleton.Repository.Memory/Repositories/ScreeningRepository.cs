@@ -43,16 +43,16 @@ namespace DDDSkeleton.Repository.Memory.Repositories
                 Date = domainType.Date,
                 Remark = domainType.Remark,
                 GlobalEvaluation = domainType.GlobalEvaluation,
-                Aspects = new List<DatabaseSceeningAspect>()
+                Aspects = new List<DatabaseScreeningAspect>()
             };
 
             foreach (var excercise in domainType.Excercises)
             {
                 if (!excercise.Evaluations.Any())
                 {
-                    databaseScreening.Aspects.Add(new DatabaseSceeningAspect
+                    databaseScreening.Aspects.Add(new DatabaseScreeningAspect
                     {
-                        AspectType = (int)DatabaseSceeningAspect.AspectTypes.Excercise,
+                        AspectType = (int)DatabaseScreeningAspect.AspectTypes.Excercise,
                         Name = excercise.Name
                     });
                 }
@@ -71,9 +71,9 @@ namespace DDDSkeleton.Repository.Memory.Repositories
             {
                 if (!knowledgeDomain.Evaluations.Any())
                 {
-                    databaseScreening.Aspects.Add(new DatabaseSceeningAspect
+                    databaseScreening.Aspects.Add(new DatabaseScreeningAspect
                     {
-                        AspectType = (int)DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                        AspectType = (int)DatabaseScreeningAspect.AspectTypes.KnowledgeDomain,
                         Name = knowledgeDomain.Name
                     });
                 }
@@ -91,24 +91,24 @@ namespace DDDSkeleton.Repository.Memory.Repositories
             return databaseScreening;
         }
 
-        private static DatabaseSceeningAspect CreateDatabaseKnowledgeScreeningAspect(KnowledgeDomain knowledgeDomain,
+        private static DatabaseScreeningAspect CreateDatabaseKnowledgeScreeningAspect(KnowledgeDomain knowledgeDomain,
             Evaluation evaluation)
         {
-            return new DatabaseSceeningAspect
+            return new DatabaseScreeningAspect
             {
-                AspectType = (int)DatabaseSceeningAspect.AspectTypes.KnwoledgeDomain,
+                AspectType = (int)DatabaseScreeningAspect.AspectTypes.KnowledgeDomain,
                 Name = knowledgeDomain.Name,
                 Score = (int)evaluation.Score,
                 Remark = evaluation.Remark
             };
         }
 
-        private static DatabaseSceeningAspect CreateDatabaseExerciceScreeningAspect(Excercise excercise,
+        private static DatabaseScreeningAspect CreateDatabaseExerciceScreeningAspect(Excercise excercise,
             Evaluation evaluation)
         {
-            return new DatabaseSceeningAspect
+            return new DatabaseScreeningAspect
             {
-                AspectType = (int)DatabaseSceeningAspect.AspectTypes.Excercise,
+                AspectType = (int)DatabaseScreeningAspect.AspectTypes.Excercise,
                 Name = excercise.Name,
                 Score = (int)evaluation.Score,
                 Remark = evaluation.Remark
@@ -129,8 +129,8 @@ namespace DDDSkeleton.Repository.Memory.Repositories
 
             foreach (var databaseSceeningAspect in databaseScreening.Aspects)
             {
-                if ((DatabaseSceeningAspect.AspectTypes) databaseSceeningAspect.AspectType ==
-                    DatabaseSceeningAspect.AspectTypes.Excercise)
+                if ((DatabaseScreeningAspect.AspectTypes) databaseSceeningAspect.AspectType ==
+                    DatabaseScreeningAspect.AspectTypes.Excercise)
                 {
                     if (!excercices.ContainsKey(databaseSceeningAspect.Name))
                     {
@@ -167,36 +167,36 @@ namespace DDDSkeleton.Repository.Memory.Repositories
             return screening;
         }
 
-        private static KnowledgeDomain CreateKnowledgeDomain(DatabaseSceeningAspect databaseSceeningAspect)
+        private static KnowledgeDomain CreateKnowledgeDomain(DatabaseScreeningAspect databaseScreeningAspect)
         {
-            var knowledgeDomain = KnowledgeDomainBuilder.Create(databaseSceeningAspect.Name)
+            var knowledgeDomain = KnowledgeDomainBuilder.Create(databaseScreeningAspect.Name)
                 .Build();
 
-            if (databaseSceeningAspect.Remark != null)
+            if (databaseScreeningAspect.Remark != null)
             {
-                knowledgeDomain.AddEvaluation(CreateEvaluation(databaseSceeningAspect));
+                knowledgeDomain.AddEvaluation(CreateEvaluation(databaseScreeningAspect));
             }
             return knowledgeDomain;
         }
 
-        private static Excercise CreateExcercise(DatabaseSceeningAspect databaseSceeningAspect)
+        private static Excercise CreateExcercise(DatabaseScreeningAspect databaseScreeningAspect)
         {
-            var excercise = ExcerciseBuilder.Create(databaseSceeningAspect.Name)
+            var excercise = ExcerciseBuilder.Create(databaseScreeningAspect.Name)
                 .Build();
 
-            if (databaseSceeningAspect.Remark != null)
+            if (databaseScreeningAspect.Remark != null)
             {
-                excercise.AddEvaluation(CreateEvaluation(databaseSceeningAspect));
+                excercise.AddEvaluation(CreateEvaluation(databaseScreeningAspect));
             }
 
             return excercise;
         }
 
-        private static Evaluation CreateEvaluation(DatabaseSceeningAspect databaseSceeningAspect)
+        private static Evaluation CreateEvaluation(DatabaseScreeningAspect databaseScreeningAspect)
         {
             var evalution = EvaluationBuilder.Create()
-                .WithRemark(databaseSceeningAspect.Remark)
-                .WithScores((Evaluation.EvaluationScores) databaseSceeningAspect.Score)
+                .WithRemark(databaseScreeningAspect.Remark)
+                .WithScores((Evaluation.EvaluationScores) databaseScreeningAspect.Score)
                 .Build();
 
             return evalution;
