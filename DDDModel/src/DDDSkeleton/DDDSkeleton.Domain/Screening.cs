@@ -70,13 +70,5 @@ namespace DDDSkeleton.Domain
         {
             _knowledgeDomains.Clear();
         }
-
-        protected override void Validate()
-        {
-            if (string.IsNullOrEmpty(Candidate))
-            {
-                AddBrokenRule(ScreeningBusinessRule.CandidateRequired);
-            }
-        }
     }
 }

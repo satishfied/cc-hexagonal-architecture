@@ -230,18 +230,6 @@ namespace DDDSkeleton.ApplicationServices.Services
 
         private static void ThrowExceptionWhenScreeningInvalid(Screening screening)
         {
-            var brokenRules = screening.GetBrokenRules().ToArray();
-
-            if (brokenRules.Any())
-            {
-                var brokenRulesBuilder = new StringBuilder();
-                brokenRulesBuilder.AppendLine("There was a problem saving the screening object :");
-                foreach (var businessRule in brokenRules)
-                {
-                    brokenRulesBuilder.AppendLine(businessRule.Description);
-                }
-                throw new Exception(brokenRulesBuilder.ToString());
-            }
         }
 
         private static Exception GetStandardScreeningNotFoudException()

@@ -40,7 +40,6 @@ namespace DDDSkeleton.WebService.DependencyResolution
                     scan.AssemblyContainingType<IScreeningRepository>();
                     scan.AssemblyContainingType<ScreeningRepository>();
                     scan.AssemblyContainingType<IScreeningService>();
-                    scan.AssemblyContainingType<BusinessRule>();
                     scan.WithDefaultConventions();
                 });
                 x.For<IUnitOfWork>().Use<InMemoryUnitOfWork>();
